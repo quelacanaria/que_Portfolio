@@ -1,0 +1,560 @@
+*{
+    border: 0;
+    margin: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+body{
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: .55fr 7fr .3fr;
+    grid-template-areas: 
+    "header"
+    "main"
+    "footer";
+}
+.header{
+    background-color: hsl(9, 40%, 76%);
+    grid-area: header;
+    box-shadow: 2px 2px 10px;
+    position: relative;
+}
+.container{
+    display: flex;
+    height: 100%;
+}
+.logo{
+    width: 100px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.links{
+    width: 92%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logo a{
+    margin-left: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: white;
+    text-shadow: 2px 2px 5px hsla(0, 0%, 0%, .5);
+}
+.links a{
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: hsl(0, 0%, 100%);
+    text-shadow: 2px 2px 5px hsla(0, 0%, 0%, .5);
+    margin-right: 60px;
+}
+.links a:hover{
+    color: hsla(0, 0%, 80%);
+}
+.links a:active{
+     color: hsla(0, 0%, 70%);
+}
+.main{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: 
+    "home"
+    "about"
+    "project";
+    overflow: auto;
+    background-color: hsl(147, 40%, 76%);
+    grid-area: main;
+}
+.Home{
+    grid-area: home;
+    padding: 25px;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 
+    "b1 b2";
+    row-gap: 20px;
+}
+.box{
+    background-color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.box:nth-child(1){
+    background-color: hsl(147, 40%, 76%);
+    display: flex;
+    align-items: center;
+    justify-content:end;
+    grid-area: b1;
+}
+.box:nth-child(2){
+    background-color: hsl(147, 40%, 76%);
+    display: flex;
+    flex-direction: column;
+    align-items:start;
+    justify-content: center;
+    grid-area: b2;
+}
+.background{
+    margin-left: 20px;
+    margin-right: 20px;
+    overflow: hidden;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 200px;
+    background-color: hsl(147, 40%, 76%);
+    box-shadow: 2px 2px 5px;
+    border-radius: 450px;
+}
+.Data{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.Data p:nth-child(1){
+    font-size: 2rem;
+}
+.Data p:nth-child(2){
+    font-size: 1.5rem;
+}
+.profile{
+    margin-top: 10px;
+    width: 220px;
+}
+.About{
+    overflow: hidden;
+    grid-area: about;
+    padding: 25px;
+    height: 200px;
+    
+}
+
+.TechStack{
+    margin-left: 20px;
+    font-size: 1.3rem;
+}
+
+.aboutSwiper{
+    overflow: visible;
+    position: relative;
+    margin: 0 auto;
+}
+
+.aboutSliderWraper{
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+    height: 100%;
+    width: 100%;
+}
+
+.aboutSwiperButtonPrev{
+    margin-right: -46px;
+    color: black;
+    font-weight: bolder;
+
+}
+
+.aboutSwiperButtonNext{
+    margin-left: -46px;
+    color: black;
+    font-weight: bolder;
+}
+
+.swiper-button-prev:hover{
+    color: black;
+    font-weight: bolder;
+    border: 2px solid black;
+}
+
+.swiper-button-prev:active{
+    color: hsl(147, 40%, 76%);
+    font-weight: bolder;
+    border: 2px solid black;
+    background-color: black;
+}
+
+.swiper-button-next:hover{
+    border: 2px solid black;
+    color: black;
+    font-weight: bolder;
+}
+
+.swiper-button-next:active{
+    border: 2px solid black;
+    background-color: black;
+    color: hsl(147, 40%, 76%);
+    font-weight: bolder;
+}
+
+
+.Projects{
+    overflow: hidden;
+    grid-area: project; 
+    height: 800px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.projectSwiper{
+    overflow: visible;
+    position: relative;
+    margin: 0 auto;
+    background-color: hsl(9, 40%, 76%);
+    padding: 5%;
+    border-radius: 20px;
+}
+
+.projectSliderWraper{
+     overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+    height: 100%;
+    width: 100%;
+}
+
+.projectSwiperSlide{
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 25rem;
+
+}
+
+.projectsTitle{
+    margin-left: 40px;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.projectContent{
+    display: block;
+    background-color: white;
+    border-radius: 5%;
+        height: 100%;
+    position: absolute;
+ 
+}
+
+.imageContainer{
+    padding: 5%;
+}
+
+.projectPhoto{
+    display: block;
+    height: auto;
+    max-width: 100%;
+    aspect-ratio: 2/1;
+}
+
+.projectDatas{
+    display: block;
+    height: 50%;
+    text-align: center;
+}
+
+.title{
+    height: 15%;
+    text-align: center;
+
+}
+
+.description{
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    height: 55%;
+    font-size: 1rem;
+    text-align: center
+}
+
+.button{
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    background-color: white;
+    display: inline-block;
+    height: 10px;
+    padding: 12px 24px 21px;  
+    border: 2px solid black;
+    border-radius: 5%;
+    font-size: 1rem;
+}
+
+.projectSwiperButtonPrev{
+    margin-left: 0px;
+    color: black;
+    font-weight: bolder;
+}
+
+.projectSwiperButtonNext{
+    margin-right: 0px;
+    color: black;
+    font-weight: bolder;
+}
+
+
+.footer{
+    background-color: black;
+    grid-area: footer;
+}
+
+/* @media(max-width: 1073px){
+    .projectSwiperButtonNext,
+    .projectSwiperButtonPrev{
+        display: none;
+    }
+} */
+
+@media(max-width: 1100px){
+    .projectSwiperSlide{
+        height: 23rem;
+    }
+    .title{
+        font-size: 1.1rem;
+    }
+    .button{
+        padding: 11px 22px 20px;
+    }
+}
+@media(max-width: 1050px){
+    .projectSwiperSlide{
+        height: 22rem;
+    }
+}
+@media(max-width: 1000px){
+    .projectSwiperSlide{
+        height: 21rem;
+    }
+    .title{
+        font-size: 1rem;
+    }
+    .description{
+        font-size: 1rem;
+    }
+    .button{
+        padding: 10px 21px 19px;
+    }
+}
+@media(max-width: 950px){
+    .projectSwiperSlide{
+        height: 20rem;
+    }
+}
+@media(max-width: 900px){
+    .projectSwiperSlide{
+        height: 19rem;
+    }
+    .title{
+        font-size: .9rem;
+    }
+    .description{
+        font-size: .9rem;
+    }
+    .button{
+        font-size: .9rem;
+        padding: 10px 20px 18px;
+    }
+}
+@media(max-width: 850px){
+    .projectSwiperSlide{
+        height: 18rem;
+    }
+}
+@media(max-width: 800px){
+    .projectSwiperSlide{
+        height: 17rem;
+    }
+    .title{
+        font-size: .8rem;
+    }
+    .description{
+        font-size: .8rem;
+    }
+    .button{
+        font-size: .8rem;
+        padding: 9px 19px 17px;
+    }
+}
+@media(max-width: 750px){
+    .projectSwiperSlide{
+        height: 17rem;
+    }
+}
+@media(max-width: 700px){
+    .projectSwiperSlide{
+        height: 16rem;
+    }
+    .title{
+        font-size: .7rem;
+    }
+    .description{
+        font-size: .7rem;
+    }
+    .button{
+        font-size: .7rem;
+        padding: 9px 19px 17px;
+    }
+}
+@media(max-width: 650px){
+    .projectSwiperSlide{
+        height: 16rem;
+    }
+}
+@media(max-width: 600px){
+    .projectSwiperSlide{
+        height: 15rem;
+    }
+    .title{
+        font-size: .6rem;
+    }
+    .description{
+        font-size: .6rem;
+    }
+    .button{
+        font-size: .6rem;
+        padding: 8px 16px 14px;
+    }
+}
+@media(max-width: 550px){
+    .projectSwiperSlide{
+        height: 13rem;
+    }
+}
+@media(max-width: 500px){
+    .projectSwiperSlide{
+        height: 13rem;
+    }
+    
+}
+@media(max-width: 450px){
+    .projectSwiperSlide{
+        height: 11rem;
+    }
+}
+@media(max-width: 400px){
+    .projectSwiperSlide{
+        height: 9rem;
+    }
+    .title{
+        font-size: .4rem;
+    }
+    .description{
+        font-size: .4rem;
+    }
+    .button{
+        font-size: .4rem;
+        padding: 3px 11px;
+    }
+    
+}
+@media(max-width: 350px){
+    .projectSwiperSlide{
+        height: 8rem;
+    }
+
+    .title{
+        font-size: .3rem;
+    }
+    .description{
+        font-size: .3rem;
+    }
+    .button{
+        font-size: .3rem;
+        padding: 4px 12px;
+    }
+    
+}
+@media(max-width: 706px){
+    .links{
+        display: none;
+    }
+    .box:nth-child(1){
+    background-color: hsl(147, 40%, 76%);
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    grid-area: b1;
+    }
+    .background{
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+    overflow: hidden;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 150px;
+    background-color: hsl(147, 40%, 76%);
+    box-shadow: 2px 2px 5px;
+    border-radius: 450px;
+    }
+    .profile{
+    margin-top: 20px;
+    width: 170px;
+    }
+    .Data p:nth-child(1){
+    font-size: 1.5rem;
+    }
+    .Data p:nth-child(2){
+        font-size: 1.2rem;
+    }
+    .Home{
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(1, 150px);
+        grid-template-areas: initial;
+    }
+    .box{
+        grid-area: initial !important;
+    }
+    .About{
+    grid-area: about;
+    padding: 25px;
+    height: 200px;
+    }
+    .projectsTitle,
+    .TechStack{
+    font-size: 1rem;
+    }
+    .aboutSwiper{
+        overflow: hidden;
+    }
+}
+
+@media(max-width:500px){
+    .title{
+        font-size: .5rem;
+    }
+    .description{
+        font-size: .5rem;
+    }
+    .button{
+        font-size: .5rem;
+        padding: 4px 12px;
+    }
+    
+    .About{
+        height: 140px;
+    }
+
+}
+
+@media screen and (min-width: 600px){
+    .projectSwiper{
+        max-width: 1000px;
+    }
+    .aboutSwiper{
+        max-width: 600px;
+    }
+}

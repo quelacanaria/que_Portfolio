@@ -275,7 +275,6 @@ body{
 .myabout{
     text-decoration: underline;
     line-height: 3rem;
-    font-size: .8rem;
 }
 
 .Projects{
@@ -370,7 +369,7 @@ body{
     margin-right: 5px;
     margin-bottom: 5px;
     height: 55%;
-    font-size: .7rem;
+    font-size: .9rem;
     text-align: center
 }
 

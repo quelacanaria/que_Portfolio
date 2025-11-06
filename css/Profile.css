@@ -327,7 +327,10 @@ body{
 }
 
 .projectContent{
-    display: block;
+    display: flex;
+    align-self: flex-start;
+    justify-content: center;
+    flex-direction: column;
     background-color: white;
     border-radius: 5%;
     height: 100%;

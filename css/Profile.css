@@ -275,6 +275,7 @@ body{
 .myabout{
     text-decoration: underline;
     line-height: 3rem;
+    font-size: .8rem;
 }
 
 .Projects{
@@ -369,7 +370,7 @@ body{
     margin-right: 5px;
     margin-bottom: 5px;
     height: 55%;
-    font-size: .5rem;
+    font-size: .7rem;
     text-align: center
 }
 
@@ -831,7 +832,7 @@ input{
     .myabout{
         line-height: 1.3rem;
         
-        font-size: .9rem;
+        font-size: .8rem;
     }
 }
 @media(max-width: 500px){

@@ -21,7 +21,6 @@ body{
     position: relative;
     z-index: 9999;
 }
-
 .container{
     display: flex;
     height: 100%;
@@ -244,32 +243,7 @@ body{
     margin-bottom: 20px;
 }
 
-.aboutDetailsContainer {
-  display: grid; /* or flex, either works */
-  width: 100%;
-  max-width: 900px; /* optional: limit for large screens */
-  margin: 0 auto; /* center horizontally */
-  padding: 1rem;
-  box-sizing: border-box;
-}
-
-.aboutDetailsContents {
-  width: 100%;
-    background-color: white;
-}
-
-.myabout {
-  width: 100%;
-  max-width: 100%;
-  word-wrap: break-word; /* ensures long text wraps properly */
-  overflow-wrap: break-word;
-  white-space: normal; /* allow wrapping */
-  text-align: justify; /* makes it look cleaner */
-  line-height: 1.6;
-  font-size: 1rem; /* adjust to taste */
-}
-
-/* .aboutDetailsContainer{
+.aboutDetailsContainer{
     align-self: center;
     justify-self: center;
     grid-area: detailscontent;
@@ -290,18 +264,17 @@ body{
     background-color: white;
     padding: 20px;
     transition: transform 0.3s;
-} */
+}
 
 .aboutDetailsContents:hover{
     transform: translateY(-5px);
     box-shadow: 0 8px 20px hsla(0, 0%, 0%, .15);
 } 
 
-/* .myabout{
+.myabout{
     text-decoration: underline;
     line-height: 3rem;
-    font-size: 1rem;
-} */
+}
 
 .Projects{
     overflow: hidden;
@@ -352,10 +325,7 @@ body{
 }
 
 .projectContent{
-    display: flex;
-    align-self: flex-start;
-    justify-content: center;
-    flex-direction: column;
+    display: block;
     background-color: white;
     border-radius: 5%;
     height: 100%;
@@ -860,7 +830,7 @@ input{
     .myabout{
         line-height: 1.3rem;
         
-        font-size: .8rem;
+        font-size: .9rem;
     }
 }
 @media(max-width: 500px){
@@ -947,10 +917,6 @@ input{
         align-items: center;
         justify-content: space-evenly;
         width: 100%;
-    }
-
-    .myabout{
-        
     }
 
     .footerNavLink{
@@ -1069,10 +1035,6 @@ label{
 input{
     width: 98%;
     margin-right: 60%;
-}
-
-.description{
-    font-size: .8rem;
 }
     
 }

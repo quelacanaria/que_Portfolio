@@ -1045,6 +1045,10 @@ input{
     width: 98%;
     margin-right: 60%;
 }
+
+.description{
+    font-size: .8rem;
+}
     
 }
 

@@ -275,6 +275,7 @@ body{
 .myabout{
     text-decoration: underline;
     line-height: 3rem;
+    font-size: 1rem;
 }
 
 .Projects{
@@ -921,7 +922,7 @@ input{
     }
 
     .myabout{
-        fon
+        
     }
 
     .footerNavLink{

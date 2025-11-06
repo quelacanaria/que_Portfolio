@@ -19,6 +19,7 @@ body{
     grid-area: header;
     box-shadow: 2px 2px 10px;
     position: relative;
+    z-index: 9999;
 }
 .container{
     display: flex;

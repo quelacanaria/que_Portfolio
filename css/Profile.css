@@ -7,13 +7,14 @@ body{
     height: 100vh;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: .55fr 7fr .3fr;
+    grid-template-rows: .6fr 7fr;
     grid-template-areas: 
     "header"
-    "main"
-    "footer";
+    "main";
 }
+
 .header{
+    height: 80px;
     background-color: hsl(9, 40%, 76%);
     grid-area: header;
     box-shadow: 2px 2px 10px;
@@ -35,6 +36,9 @@ body{
     justify-content: center;
     align-items: center;
 }
+.links-hidden{
+    display: none;
+}
 .logo a{
     margin-left: 20px;
     text-decoration: none;
@@ -50,21 +54,34 @@ body{
     color: hsl(0, 0%, 100%);
     text-shadow: 2px 2px 5px hsla(0, 0%, 0%, .5);
     margin-right: 60px;
+    transition: transform 0.3s;
 }
 .links a:hover{
-    color: hsla(0, 0%, 80%);
+    transform: scale(1.30);
 }
+
 .links a:active{
-     color: hsla(0, 0%, 70%);
+    transform: translateY(5px);
+    box-shadow: 0 8px 20px hsla(0, 0%, 0%, .15);
 }
+.active{
+    border-bottom: 5px solid;
+}
+
+/* .links a:active{
+     color: hsla(0, 0%, 70%);
+} */
 .main{
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-areas: 
     "home"
     "about"
-    "project";
+    "aboutdetails"
+    "project"
+    "hireMe"
+    "getInTouch";
     overflow: auto;
     background-color: hsl(147, 40%, 76%);
     grid-area: main;
@@ -153,19 +170,33 @@ body{
     overflow: hidden;
     position: relative;
     margin: 0 auto;
-    height: 100%;
+    padding-top: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+ 
+}
+
+.tech-logo{
     width: 100%;
 }
 
+.aboutSwiperSlide{
+    transition: transform 0.3s;
+} 
+
+.aboutSwiperSlide:hover{
+    transform: scale(1.05);
+}
+
 .aboutSwiperButtonPrev{
-    margin-right: -46px;
+    margin-right: -66px;
     color: black;
     font-weight: bolder;
 
 }
 
 .aboutSwiperButtonNext{
-    margin-left: -46px;
+    margin-left: -66px;
     color: black;
     font-weight: bolder;
 }
@@ -196,11 +227,58 @@ body{
     font-weight: bolder;
 }
 
+.aboutDetails{
+    grid-area: aboutdetails;
+    overflow: hidden;
+    height: 600px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.aboutDetailsTitle{
+    grid-area: detailsTitle;
+    margin-left: 50px;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.aboutDetailsContainer{
+    align-self: center;
+    justify-self: center;
+    grid-area: detailscontent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    height: 90%;
+    background-color: hsla(9, 40%, 76%);
+    border-radius: 20px;
+}
+
+.aboutDetailsContents{
+    width: 85%;
+    height: 85%;
+    align-self: center;
+    justify-self: center;
+    background-color: white;
+    padding: 20px;
+    transition: transform 0.3s;
+}
+
+.aboutDetailsContents:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px hsla(0, 0%, 0%, .15);
+} 
+
+.myabout{
+    text-decoration: underline;
+    line-height: 3rem;
+}
 
 .Projects{
     overflow: hidden;
     grid-area: project; 
-    height: 800px;
+    height: 680px;
     margin-left: 10px;
     margin-right: 10px;
 }
@@ -218,8 +296,11 @@ body{
      overflow: hidden;
     position: relative;
     margin: 0 auto;
-    height: 100%;
-    width: 100%;
+    padding-top: 10px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 10px;
+   
 }
 
 .projectSwiperSlide{
@@ -227,7 +308,13 @@ body{
     position: relative;
     width: 100%;
     height: 25rem;
+    border-radius: 20px;
+    transition: transform 0.3s;
+}
 
+.projectSwiperSlide:hover{
+    transform: translateY(-5px);
+    /* box-shadow: 0px 8px 20px hsla(0, 0%, 0%, .15); */
 }
 
 .projectsTitle{
@@ -240,16 +327,23 @@ body{
     display: block;
     background-color: white;
     border-radius: 5%;
-        height: 100%;
+    height: 100%;
+    width: 300px;
+    justify-self: center;
     position: absolute;
  
+}
+
+.projectContent:hover{
+    box-shadow: 0 8px 20px hsla(0, 0%, 0%, .5);
 }
 
 .imageContainer{
     padding: 5%;
 }
 
-.projectPhoto{
+#projectPhoto{
+    cursor: pointer;
     display: block;
     height: auto;
     max-width: 100%;
@@ -279,15 +373,31 @@ body{
 
 .button{
     text-decoration: none;
-    color: black;
+    color: white;
+    font-weight: bold;
     text-align: center;
-    background-color: white;
+    background-color: hsl(9, 40%, 76%);
     display: inline-block;
     height: 10px;
     padding: 12px 24px 21px;  
-    border: 2px solid black;
-    border-radius: 5%;
+    border: 2px solid transparent;
+    border-radius: 20px;
     font-size: 1rem;
+    box-shadow: 5px 5px 5px hsla(0, 0%, 0%, .15);
+    /* transition: transform 0.3s; */
+}
+
+.button:hover{
+    background-color: rgba(250, 250, 250, .1);
+    color: hsl(9, 40%, 76%);
+    border: 2px solid hsl(9, 40%, 76%);
+    box-shadow: 5px 5px 5px hsl(9, 40%, 76%);
+    /* transform: scale(1.00); */
+}
+
+.button:active{
+    transform: translateY(5px);
+    box-shadow: 0px -8px 20px hsla(0, 0%, 0%, .15);
 }
 
 .projectSwiperButtonPrev{
@@ -302,175 +412,445 @@ body{
     font-weight: bolder;
 }
 
-
-.footer{
-    background-color: black;
-    grid-area: footer;
+.githubBtnContainer{
+    text-align: center;
+    height: 100px;
+    width: 100%;
+    align-content: center;
 }
 
-/* @media(max-width: 1073px){
-    .projectSwiperButtonNext,
-    .projectSwiperButtonPrev{
-        display: none;
-    }
-} */
-
-@media(max-width: 1100px){
-    .projectSwiperSlide{
-        height: 23rem;
-    }
-    .title{
-        font-size: 1.1rem;
-    }
-    .button{
-        padding: 11px 22px 20px;
-    }
+.githubBtn{
+    display: inline-block;
+    text-decoration: none;
+    font-weight: bold;
+    background-color: white;
+    color: hsl(147, 40%, 76%);
+    box-shadow: 10px 10px 5px hsla(0, 0%, 0%, .15);
+    border: 2px solid white;
+    padding: 14px 20px;
+    font-size: 1.5rem;
+    width: auto;
 }
+
+.githubBtn:hover{
+    color: white;
+     border: 2px solid white;
+    background-color: hsl(147, 40%, 76%);
+    box-shadow: 5px 5px 5px;
+}
+
+.githubBtn:active{
+    transform: translateY(5px);
+    box-shadow: -8px -8px 20px  hsla(0, 0%, 0%, .15);
+}
+
+.contactMe{
+    width: auto;
+    height: 500px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 50px;
+}
+
+.contactMeTitle{
+    margin-left: 40px;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.contactMeContainer{
+    justify-self: center;
+    height: 100%;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: hsl(9, 40%, 76%);
+    border-radius: 20px;
+}
+
+form:hover{
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px hsla(0, 0%, 0%, .15);
+
+}
+
+form{
+    transition: transform 0.3s;
+    background-color: white;
+    border-radius: 20px;
+    padding: 10px;
+    height: 80%;
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1.50fr 2fr;
+    grid-template-areas: 
+    "title title"
+    "cnl cni"
+    "el ei"
+    "ccnl ccni"
+    "ml mi"
+    "btn btn";
+}
+
+.cnt{
+    grid-area: title;
+    align-self: center;
+}
+
+.cnl{
+    grid-area: cnl;
+}
+
+.cni{
+    grid-area: cni;
+}
+
+.el{
+    grid-area: el;
+}
+
+.ei{
+    grid-area: ei;
+}
+
+.ccnl{
+    grid-area: ccnl;
+}
+.ccni{
+    grid-area: ccni;
+}
+.ml{
+    grid-area: ml;
+    align-self: start;
+}
+.mi{
+    grid-area: mi;
+    border: 2px solid;
+    width: 80%;
+    font-size: 1.2rem;
+    resize: none;
+}
+.btn{
+    font-size: 1.2rem;
+    grid-area: btn;
+    justify-self: center;
+    align-self: center;
+    height: 70%;
+    width: 40%;
+    background-color: hsl(9, 40%, 76%);
+    color: white;
+    border: 2px solid transparent;
+    box-shadow: 5px 5px 5px hsla(0, 0%, 0%, .15);
+    transition: transform 0.3s;
+}
+
+
+.btn:hover{
+    color: hsl(9, 40%, 76%);
+    background-color: white;
+    border: 2px solid hsl(9, 40%, 76%);
+    box-shadow: 5px 5px 5px hsl(9, 40%, 76%);
+}
+
+.btn:active{
+    transform: translateY(5px);
+    box-shadow: -8px -8px 20px  hsla(0, 0%, 0%, .15);
+}
+
+label{
+    margin-right: 20px;
+    font-size: 1.2rem;
+    align-self: center;
+    justify-self: end;
+}
+
+input{
+    font-size: 1.2rem;
+    height: 80%;
+    width: 80%;
+    align-content: center;
+    align-self: center;
+    border: 2px solid;
+}
+
+.getInTouch{
+    grid-area: getInTouch;
+    width: 100%;
+    height: 50px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+    "getInTouchContainer";
+    margin-bottom: 60px;
+}
+
+.getInTouchContainer{
+    grid-area: getInTouchContainer;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+
+}
+
+.my-links-icons{
+    width: 10%;
+    display: block;
+    aspect-ratio: 1/1;
+}
+
+.getInTouchIcons{
+    width:5 100%;
+    height: 100;
+    margin: 0 auto;
+    aspect-ratio: 1/1;
+    align-self: center;
+    justify-self: center;
+    transition: transform 0.3s;
+    border-radius: 10px;
+}
+
+
+.getInTouchIcons:hover{
+    transform: translateY(-5px);
+}
+
+.getInTouchIcons:active{
+    transform: translateY(5px);
+}
+
+
+nav{
+    display: none;
+    background-color: hsl(9, 40%, 76%);
+    grid-area: nav;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.navContainer{
+    display: none;
+}#failedMessage,
+#successMessage{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+.messageContainer1,
+.messageContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    width: 300px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 20px;
+    font-family: "Poppins", sans-serif;
+}
+
+    .wrongmark{
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      display: block;
+      stroke-width: 0;
+      stroke: hsl(0, 100%, 50%);
+      stroke-miterlimit: 10;
+      margin: 10px auto;
+      box-shadow: inset 0px 0px 0px hsl(0, 100%, 50%);
+      animation: fill1 0.4s ease-in-out 0.4s forwards, scale 0.3s ease-in-out 0.9s both;
+      position: relative;
+    }
+
+    .checkmark {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      display: block;
+      stroke-width: 0;
+      stroke: #4CAF50;
+      stroke-miterlimit: 10;
+      margin: 10px auto;
+      box-shadow: inset 0px 0px 0px #4CAF50;
+      animation: fill 0.4s ease-in-out 0.4s forwards, scale 0.3s ease-in-out 0.9s both;
+      position: relative;
+    }
+
+    .wrongmark__circle{
+      stroke-dasharray: 166;
+      stroke-dashoffset: 166;
+      stroke-width: 2;
+      stroke-miterlimit: 10;
+      stroke: hsl(0, 100%, 50%);
+      fill: none;
+      animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+    }
+
+    .checkmark__circle {
+      stroke-dasharray: 166;
+      stroke-dashoffset: 166;
+      stroke-width: 2;
+      stroke-miterlimit: 10;
+      stroke: #4CAF50;
+      fill: none;
+      animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+    }
+
+    .wrongmark__wrong{
+      transform-origin: 50% 50%;
+      stroke-dasharray: 48;
+      stroke-dashoffset: 48;
+      color: hsl(0, 100%, 50%);
+      animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+    }
+
+    .checkmark__check {
+      transform-origin: 50% 50%;
+      stroke-dasharray: 48;
+      stroke-dashoffset: 48;
+      color: green;
+      animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+    }
+
+    @keyframes stroke {
+      100% {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    @keyframes scale {
+      0%, 100% {
+        transform: none;
+      }
+      50% {
+        transform: scale3d(1.1, 1.1, 1);
+      }
+    }
+
+    @keyframes fill {
+      100% {
+        box-shadow: inset 0px 0px 0px 10px #4CAF50;
+      }
+    }
+
+    @keyframes fill1 {
+      100% {
+        box-shadow: inset 0px 0px 0px 10px hsl(0, 100%, 50%);
+      }
+    }
+
+    .message {
+      opacity: 0;
+      margin-top: 20px;
+      text-align: center;
+      animation: fadeIn 1s ease-in-out 1.2s forwards;
+    }
+
+    .message h2 {
+      color: #333;
+      margin: 0;
+    }
+
+    .message p {
+      color: #555;
+      margin: 5px 0 0;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
 @media(max-width: 1050px){
-    .projectSwiperSlide{
-        height: 22rem;
-    }
-}
-@media(max-width: 1000px){
-    .projectSwiperSlide{
-        height: 21rem;
-    }
-    .title{
-        font-size: 1rem;
-    }
-    .description{
-        font-size: 1rem;
-    }
-    .button{
-        padding: 10px 21px 19px;
+    
+    .myabout{
+        line-height: 2.6rem;
     }
 }
 @media(max-width: 950px){
-    .projectSwiperSlide{
-        height: 20rem;
+    
+    .myabout{
+        line-height: 2.4rem;
     }
 }
 @media(max-width: 900px){
-    .projectSwiperSlide{
-        height: 19rem;
-    }
-    .title{
-        font-size: .9rem;
-    }
-    .description{
-        font-size: .9rem;
-    }
-    .button{
-        font-size: .9rem;
-        padding: 10px 20px 18px;
-    }
-}
-@media(max-width: 850px){
-    .projectSwiperSlide{
-        height: 18rem;
+
+    .myabout{
+        line-height: 2rem;
     }
 }
 @media(max-width: 800px){
-    .projectSwiperSlide{
-        height: 17rem;
+label{
+    margin-right: 20px;
+    font-size: 1rem;
+    align-self: center;
+    justify-self: end;
     }
-    .title{
-        font-size: .8rem;
-    }
-    .description{
-        font-size: .8rem;
-    }
-    .button{
-        font-size: .8rem;
-        padding: 9px 19px 17px;
+
+input{
+    font-size: 1rem;
+    height: 80%;
+    width: 80%;
+    align-content: center;
+    align-self: center;
+    border: 2px solid;
+}
+.myabout{
+        line-height: 1.9rem;
     }
 }
 @media(max-width: 750px){
-    .projectSwiperSlide{
-        height: 17rem;
-    }
+    
 }
 @media(max-width: 700px){
-    .projectSwiperSlide{
-        height: 16rem;
-    }
-    .title{
-        font-size: .7rem;
-    }
-    .description{
-        font-size: .7rem;
-    }
-    .button{
-        font-size: .7rem;
-        padding: 9px 19px 17px;
+    .myabout{
+        line-height: 1.7rem;
     }
 }
 @media(max-width: 650px){
-    .projectSwiperSlide{
-        height: 16rem;
-    }
-}
-@media(max-width: 600px){
-    .projectSwiperSlide{
-        height: 15rem;
-    }
-    .title{
-        font-size: .6rem;
-    }
-    .description{
-        font-size: .6rem;
-    }
-    .button{
-        font-size: .6rem;
-        padding: 8px 16px 14px;
+    .myabout{
+        line-height: 1.5rem;
     }
 }
 @media(max-width: 550px){
-    .projectSwiperSlide{
-        height: 13rem;
+    .myabout{
+        line-height: 1.3rem;
+        
+        font-size: .9rem;
     }
 }
 @media(max-width: 500px){
-    .projectSwiperSlide{
-        height: 13rem;
+    .myabout{
+        line-height: 1.2rem;
     }
+    .aboutDetailsContainer{width: 95%;}
     
 }
 @media(max-width: 450px){
-    .projectSwiperSlide{
-        height: 11rem;
-    }
-}
-@media(max-width: 400px){
-    .projectSwiperSlide{
-        height: 9rem;
-    }
-    .title{
-        font-size: .4rem;
-    }
-    .description{
-        font-size: .4rem;
-    }
-    .button{
-        font-size: .4rem;
-        padding: 3px 11px;
+    .myabout{
+        line-height: 1.1rem;
     }
     
 }
-@media(max-width: 350px){
-    .projectSwiperSlide{
-        height: 8rem;
+@media(max-width: 400px){
+    .myabout{
+        line-height: 1rem;
     }
-
-    .title{
-        font-size: .3rem;
-    }
-    .description{
-        font-size: .3rem;
-    }
-    .button{
-        font-size: .3rem;
-        padding: 4px 12px;
+    .Projects{
+        height: 600px;
     }
     
 }
@@ -518,6 +898,58 @@ body{
     .box{
         grid-area: initial !important;
     }
+    body{
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: .6fr 7fr .5fr;
+    grid-template-areas: 
+    "header"
+    "main"
+    "nav";
+    }
+
+
+    .navContainer{
+        height: 60px ;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 100%;
+    }
+
+    .footerNavLink{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        aspect-ratio: 1/1;
+        text-decoration: none;
+        color: white;
+        cursor: pointer;
+    }
+
+    #footerNavLinkIcons{
+       font-size: 1.5rem;
+       transition: transform 0.3s;
+    }
+    
+    #footerNavLinkIcons:hover{
+        transform: scale(1.5);
+    }
+
+    #footerNavLinkIcons:active{
+        transform: translateY(5px)
+    }
+
+    .Projects{
+        height: 620px;
+    }
+
+    .my-projects{
+        font-size: 1rem;
+    }
+
     .About{
     grid-area: about;
     padding: 25px;
@@ -530,20 +962,83 @@ body{
     .aboutSwiper{
         overflow: hidden;
     }
+    .btn,
+    .cnt{
+        font-size: 1rem;
+    }
+    .contactMe{
+        margin-bottom: 100px;
+    }
+    .contactMeContainer{
+        width: 100%;
+    }
+
+    form{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1.90fr 2fr;
+    grid-template-areas: 
+    "title"
+    "cnl"
+    "cni"
+    "el"
+    "ei"
+    "ccnl"
+    "ccni"
+    "ml"
+    "mi"
+    "btn";
+}
+
+.cnt{
+    grid-area: title;
+    align-self: center;
+}
+
+.cnl{
+    grid-area: cnl;
+}
+
+.cni{
+    grid-area: cni;
+}
+
+.el{
+    grid-area: el;
+}
+
+.ei{
+    grid-area: ei;
+}
+
+.ccnl{
+    grid-area: ccnl;
+}
+.ccni{
+    grid-area: ccni;
+}
+.ml{
+    grid-area: ml;
+    align-self: center;
+}
+.mi{
+    grid-area: mi;
+    border: 2px solid;
+    width: 98%;
+    font-size: 1.2rem;
+}
+
+label{
+    justify-self: start;
+}
+input{
+    width: 98%;
+    margin-right: 60%;
+}
+    
 }
 
 @media(max-width:500px){
-    .title{
-        font-size: .5rem;
-    }
-    .description{
-        font-size: .5rem;
-    }
-    .button{
-        font-size: .5rem;
-        padding: 4px 12px;
-    }
-    
     .About{
         height: 140px;
     }

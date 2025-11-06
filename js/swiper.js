@@ -3,7 +3,7 @@ const swiperCards = new Swiper('.aboutSliderWraper', {
   spaceBetween: 10,
   slidesPerView: 3,
   grabCursor: true,
-centeredSlides: true,
+centeredSlides: false,
   pagination: {
     el: '.aboutSwiperPagination',
     clickable: true,

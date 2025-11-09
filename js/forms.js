@@ -18,26 +18,45 @@ async function handleSubmit(event){
         if(response.ok){
             // status.innerHTML = "Thanks for your submission";
 
+                // function task1(callback){
+                //     setTimeout(() => {
+                //         svg2.style.display = "flex";
+                //         callback();
+                    
+                //     }, 0);
+                // }
+
+                // function task2(callback){
+                //     setTimeout(() => {
+                //         svg2.style.display = "none";
+                //         callback();
+                //     }, 3000);
+                // }
+
+                // task1(() => {
+                //     task2(() => console.log("done") );
+                // });
+
                 function task1(callback){
                     setTimeout(() => {
-                        svg2.style.display = "flex";
+                        svg3.style.display = "flex";
                         callback();
                     
-                    }, 0);
-                }
+                        }, 0);
+                    }
 
-                function task2(callback){
-                    setTimeout(() => {
-                        svg2.style.display = "none";
-                        callback();
-                    }, 3000);
-                }
+                    function task2(callback){
+                        setTimeout(() => {
+                            svg3.style.display = "none";
+                            callback();
+                        }, 5000);
+                    }
 
-                task1(() => {
-                    task2(() => console.log("done") );
-                });
+                    task1(() => {
+                        task2(() => console.log("done") );
+                    });
 
-                    forms.reset();
+                    // forms.reset();
         }else{
             response.json().then(data => {
                 if(Object.hasOwn(data, 'errors')){
@@ -57,7 +76,7 @@ async function handleSubmit(event){
                         setTimeout(() => {
                             svg3.style.display = "none";
                             callback();
-                        }, 3000);
+                        },5000);
                     }
 
                     task1(() => {
@@ -82,7 +101,7 @@ async function handleSubmit(event){
             setTimeout(() => {
                 svg3.style.display = "none";
                 callback();
-            }, 3000);
+            }, 5000);
         }
 
         task1(() => {

@@ -522,6 +522,9 @@ form{
 .ccni{
     grid-area: ccni;
 }
+input.ccni[type = "number"]::-webkit-inner-spin-button{
+    display: none;
+}
 .ml{
     grid-area: ml;
     align-self: start;

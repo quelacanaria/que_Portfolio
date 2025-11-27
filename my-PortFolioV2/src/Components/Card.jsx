@@ -13,7 +13,7 @@ const techIcons = [
 function Card({pic = ''}){
     return(
         <>
-          <div className="w-full h-[400px] bg-green-xx p-[25px]">
+          <div className=" h-[400px] bg-green-xx p-[25px] mx-auto 2xl:w-[50%] xl:w-[60%] lg:w-[70%] md:w-[80%] sm:w-[80%] xs:w-[100%] ">
       <p className="text-[1.1rem] mb-4">
         <i className="fa-solid fa-screwdriver-wrench"></i> My TechStack tools
       </p>

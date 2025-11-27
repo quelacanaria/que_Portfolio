@@ -1,0 +1,40 @@
+{
+    "Projects": {
+        "proj1":{
+            "pic":"Inventory System",
+            "description":"July 2023 - Tech stack I used includes HTML, CSS, JavaScript, Bootstrap, Xampp, PHP, and Jquery. I implemented CRUD operations, as well as authorization and authentication.",
+            "link":"https://github.com/quelacanaria/InventorySystem",
+            "frontend":["html5", "css3", "javascript", "bootstrap", "jquery"],
+            "backend":["php"],
+            "database":["mysql"],
+            "date":"July 2023"
+        },
+        "proj2":{
+            "pic":"BankApp",
+            "description":"Sept. 2025 - Tech stack I used includes HTML, CSS, JavaScript, Bootstrap, Xampp, Java, and Spring Boot. I implemented CRUD operations, as well as authorization and authentication.",
+            "link":"https://github.com/quelacanaria/Task/tree/main/BankApp",
+            "frontend":["html5", "css3", "javascript", "bootstrap"],
+            "backend":["java", "springBoot"],
+            "database":["mysql"],
+            "date":"September 2025"
+        },
+        "proj3":{
+            "pic":"DiceRoller",
+            "description":"Oct. 2025 - TechStack I used is HTML, CSS and JavaScript.",
+            "link":"https://quelacanaria.github.io/diceRoller/",
+            "frontend":["html5", "css3", "javascript", "react"],
+            "backend":[],
+            "database":[],
+            "date":"October 2025"
+        },
+        "proj4":{
+            "pic":"TodoListApp",
+            "description":"November 2025 – I built this project using HTML, CSS, JavaScript, and React. It supports basic CRUD functionality even without a backend.",
+            "link":"https://quelacanaria.github.io/TodoListApp_React/",
+            "frontend":["html5", "css3", "javascript", "react"],
+            "backend":[],
+            "database":[],
+            "date":"November 2025"
+        }
+    }
+}

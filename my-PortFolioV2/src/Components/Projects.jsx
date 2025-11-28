@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";  
 import 'swiper/css';    
@@ -5,12 +6,13 @@ import "swiper/css/navigation";
 import projectData from './proj-datas/Description.json'
 import './flip.css';
 function Projects() {
+    const [flip, setFlip] = useState('card');
     const des = projectData;
     console.log(des);
 
     return(
         <>
-          <div className="w-full h-[500px] bg-green-xx content-center ">
+          <div className="w-full h-[700px] bg-green-xx content-center ">
             <div className="max-w-[1100px] h-[470px] mx-auto">
                 <div className="main w-full h-full bg-fink-99 mx-auto rounded-2xl p-[10px]">
                     <Swiper
@@ -41,14 +43,14 @@ function Projects() {
                     {
                         des && Object.values(des.Projects).map((image, index) => (
                             <SwiperSlide key={index}>
-                            <div className='card mb-[20px]'>
+                            <div className={`${flip} mb-[20px]`}>
                                 <div className='front max-w-[300px] min-w-[300px] max-h-[400px] min-h-[400px] bg-white p-[15px] rounded-[10px] shadow-header justify-self-center hover:translate-y-[-10px] duration-300 mt-[10px] mb-[20px] relative flex flex-col z-10'>
                                     <img className='border-1' src={`./src/Components/projects-images/${image.pic}.png`} alt="" />
                                     <p className='text-[1.1rem] text-center'>{image.pic}</p>
                                     <p className='text-[1rem]'>{image.date}{image.description}</p>
                                     <div className='mt-auto flex gap-4 justify-evenly'>
-                                        
-                                        <a href={`${image.link}`} target='_blank' className='w-[120px] h-[50px] border-2 content-center text-center font-bold text-white border border-transparent rounded-[10px] bg-fink-99 hover:scale-110 active:scale-90 duration-300 shadow-mine'>Goto Project</a>
+                                         
+                                        <a href={`${image.link}`} target='_blank'onMouseLeave={() => setFlip("card")} onMouseEnter={() => setFlip("dontFlip")} className={`w-[120px] h-[50px] border-2 content-center text-center font-bold text-white border border-transparent rounded-[10px] bg-fink-99 hover:scale-110 active:scale-90 active:shadow-transparent hover:shadow-fink-99 hover:bg-transparent hover:text-fink-99 hover:border-fink-99 duration-300 shadow-mine`}>Goto Project</a>
                                     </div>
                                 </div>
                                 <div className='back max-w-[300px] min-w-[300px] max-h-[400px] min-h-[400px] bg-white p-[15px] rounded-[10px] shadow-header justify-self-center hover:translate-y-[-10px] duration-300 mt-[10px] mb-[10px] relative flex flex-col'>
@@ -91,6 +93,11 @@ function Projects() {
                     </Swiper>
                 </div>
             </div>
+
+            <div className="h-[100px] text-center content-center">
+                <a target="_blank" href="https://github.com/quelacanaria" className="w-[220px] h-[80px] text-[1.5rem] font-bold inline-block border-[2px] border-transparent content-center font-bold text-green-xx shadow-mine bg-white hover:scale-130 duration-300 hover:bg-green-xx hover:text-white hover:border-white hover:shadow-white active:scale-90">Visit my Github</a>
+            </div>
+
           </div>
         </>
     )

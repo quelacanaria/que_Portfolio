@@ -6,8 +6,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 const techIcons = [
-  "html5", "css3", "javascript", "react", "nodejs", "expressjs",
-  "java", "springBoot", "php", "git", "github"
+  "html5", "css3", "tailwindcss", "javascript", "react", "nodejs", "expressjs",
+  "java", "springBoot", "php", "xampp", "mongodb", "git", "github"
 ];
 
 function Card(){

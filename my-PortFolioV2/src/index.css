@@ -28,3 +28,7 @@
 * {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+.front:active .back {
+  transform: rotateY(180deg);
+
+}

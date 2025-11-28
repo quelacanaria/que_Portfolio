@@ -1,31 +1,18 @@
-import axios from 'axios'
-import React, { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";  
 import 'swiper/css';    
 import "swiper/css/navigation";
-
+import projectData from './proj-datas/Description.json'
+import './flip.css';
 function Projects() {
-const [ des, setDes ] = useState(null);
-    const getDes = async() => {
-        try{
-            const response = await axios.get('./src/Components/proj-datas/Description.json');
-            console.log('response -> ', response.data);
-            setDes(response.data);
-        }catch(error){
-            console.log('error -> ', response.data)
-        }
-    }
-
-    useEffect(() => {
-        getDes();
-    }, [])
+    const des = projectData;
+    console.log(des);
 
     return(
         <>
-          <div className="w-full h-[445px] bg-green-xx content-center ">
-            <div className="w-[95%] h-full mx-auto shrink-0 z-[-1] ">
-                <div className="w-full h-full bg-fink-99 mx-auto rounded-2xl p-[10px]">
+          <div className="w-full h-[500px] bg-green-xx content-center ">
+            <div className="max-w-[1100px] h-[470px] mx-auto">
+                <div className="main w-full h-full bg-fink-99 mx-auto rounded-2xl p-[10px]">
                     <Swiper
                         modules={[Navigation, Autoplay]}
                         grabCursor={true}
@@ -39,32 +26,68 @@ const [ des, setDes ] = useState(null);
                                 1150: {slidesPerView: 3, spaceBetween: 50},
                                 1100: {slidesPerView: 3, spaceBetween: 50},
                                 1000: {slidesPerView: 3, spaceBetween: 60},
-                                900: { slidesPerView: 2, spaceBetween: -170},
-                                800: { slidesPerView: 2, spaceBetween: -20},
-                                700: { slidesPerView: 2, spaceBetween: 20},
-                                600: { slidesPerView: 1, spaceBetween: 50},
-                                500: { slidesPerView: 1, spaceBetween: 50},
-                                400: { slidesPerView: 1, spaceBetween: 20},
-                                300: { slidesPerView: 1, spaceBetween: 20},
-                                200: { slidesPerView: 1, spaceBetween: 20},
-                                0: { slidesPerView: 3, spaceBetween: 30},
+                                 900: { slidesPerView: 2, spaceBetween: -170},
+                                 800: { slidesPerView: 2, spaceBetween: -20},
+                                 700: { slidesPerView: 2, spaceBetween: 20},
+                                 600: { slidesPerView: 1, spaceBetween: 50},
+                                 500: { slidesPerView: 1, spaceBetween: 50},
+                                 400: { slidesPerView: 1, spaceBetween: 20},
+                                 300: { slidesPerView: 1, spaceBetween: 20},
+                                 200: { slidesPerView: 1, spaceBetween: 20},
+                                   0: { slidesPerView: 3, spaceBetween: 30},
                                 }}
-                        autoplay={{ delay: 1500, disableOnInteraction: false }}>
+                        // autoplay={{ delay: 1500, disableOnInteraction: false }}
+                        >
                     {
                         des && Object.values(des.Projects).map((image, index) => (
                             <SwiperSlide key={index}>
-                                <div className='max-w-[300px] min-w-[300px] max-h-[400px] min-h-[400px] bg-white p-[15px] rounded-[10px] shadow-header justify-self-center hover:translate-y-[-10px] duration-300 mt-[10px] mb-[10px] relative flex flex-col'>
+                            <div className='card mb-[20px]'>
+                                <div className='front max-w-[300px] min-w-[300px] max-h-[400px] min-h-[400px] bg-white p-[15px] rounded-[10px] shadow-header justify-self-center hover:translate-y-[-10px] duration-300 mt-[10px] mb-[20px] relative flex flex-col z-10'>
                                     <img className='border-1' src={`./src/Components/projects-images/${image.pic}.png`} alt="" />
                                     <p className='text-[1.1rem] text-center'>{image.pic}</p>
-                                    <p className='text-[1rem]'>{image.description}</p>
+                                    <p className='text-[1rem]'>{image.date}{image.description}</p>
                                     <div className='mt-auto flex gap-4 justify-evenly'>
-                                        <button className='w-[120px] h-[50px] border-2 font-bold text-fink-99 border border-fink-99 rounded-[20px] bg-white shadow-mine hover:scale-110 active:scale-90 duration-300 '>View Project</button>
-                                        <a href={`${image.link}`} target='_blank' className='w-[120px] h-[50px] border-2 content-center text-center font-bold text-white border border-transparent rounded-[20px] bg-fink-99 hover:scale-110 active:scale-90 duration-300 shadow-mine'>Goto Project</a>
+                                        
+                                        <a href={`${image.link}`} target='_blank' className='w-[120px] h-[50px] border-2 content-center text-center font-bold text-white border border-transparent rounded-[10px] bg-fink-99 hover:scale-110 active:scale-90 duration-300 shadow-mine'>Goto Project</a>
                                     </div>
                                 </div>
+                                <div className='back max-w-[300px] min-w-[300px] max-h-[400px] min-h-[400px] bg-white p-[15px] rounded-[10px] shadow-header justify-self-center hover:translate-y-[-10px] duration-300 mt-[10px] mb-[10px] relative flex flex-col'>
+
+                                    <p>Frontend</p>
+                                    <div className='flex justify-evenly'>
+                                        {(image.frontend.length > 0 ? (image.frontend.map((front, index) => (
+                                            <img className='w-[40px]'  src={`./src/Components/image/${front}.svg`} alt={front} />
+                                        ))) : (<p>- - - No Frontend - - -</p>))}
+                                    </div>
+
+                                    <p>Backend</p>
+                                    <div className='flex justify-evenly'>
+                                        {(image.backend.length > 0 ? (image.backend.map((front, index) => (
+                                            <img className='w-[40px]'  src={`./src/Components/image/${front}.svg`} alt={front} />
+                                        ))) : (<p>- - - No Backend - - -</p>))}
+                                    </div>
+
+                                    <p>Database</p>
+                                    <div className='flex justify-evenly'>
+                                        {(image.database.length > 0 ? (image.database.map((front, index) => (
+                                            <img className='w-[40px]'  src={`./src/Components/image/${front}.svg`} alt={front} />
+                                        ))) : (<p>- - - No Database - - -</p>))}
+                                    </div>
+
+                                    <p>Deployment</p>
+                                    <div className='flex justify-evenly'>
+                                        {(image.deployment.length > 0 ? (image.deployment.map((front, index) => (
+                                            <img className='w-[40px]'  src={`./src/Components/image/${front}.svg`} alt={front} />
+                                        ))) : (<p>- - - No Deployment - - -</p>))}
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        
                             </SwiperSlide>
                         ))
                     }
+
                     </Swiper>
                 </div>
             </div>

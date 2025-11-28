@@ -1,39 +1,47 @@
 {
     "Projects": {
         "proj1":{
+            "id":1,
             "pic":"Inventory System",
-            "description":"July 2023 - Tech stack I used includes HTML, CSS, JavaScript, Bootstrap, Xampp, PHP, and Jquery. I implemented CRUD operations, as well as authorization and authentication.",
+            "description":" - I built this when I was in my second year of college for our CPE-221 Software Design project. We were required to create any website and present a fully functional version at the end of the semester.",
             "link":"https://github.com/quelacanaria/InventorySystem",
             "frontend":["html5", "css3", "javascript", "bootstrap", "jquery"],
             "backend":["php"],
-            "database":["mysql"],
+            "database":["xampp"],
+            "deployment":[],
             "date":"July 2023"
         },
         "proj2":{
+            "id":2,
             "pic":"BankApp",
-            "description":"Sept. 2025 - Tech stack I used includes HTML, CSS, JavaScript, Bootstrap, Xampp, Java, and Spring Boot. I implemented CRUD operations, as well as authorization and authentication.",
+            "description":" - Tech stack I used includes HTML, CSS, JavaScript, Bootstrap, Xampp, Java, and Spring Boot. I implemented CRUD operations, as well as authorization and authentication.",
             "link":"https://github.com/quelacanaria/Task/tree/main/BankApp",
             "frontend":["html5", "css3", "javascript", "bootstrap"],
             "backend":["java", "springBoot"],
-            "database":["mysql"],
+            "database":["xampp"],
+            "deployment":[],
             "date":"September 2025"
         },
         "proj3":{
+            "id":3,
             "pic":"DiceRoller",
-            "description":"Oct. 2025 - TechStack I used is HTML, CSS and JavaScript.",
+            "description":" - TechStack I used is HTML, CSS and JavaScript.",
             "link":"https://quelacanaria.github.io/diceRoller/",
-            "frontend":["html5", "css3", "javascript", "react"],
+            "frontend":["html5", "css3", "javascript"],
             "backend":[],
             "database":[],
+            "deployment":["github"],
             "date":"October 2025"
         },
         "proj4":{
+            "id":4,
             "pic":"TodoListApp",
-            "description":"November 2025 – I built this project using HTML, CSS, JavaScript, and React. It supports basic CRUD functionality even without a backend.",
+            "description":" – I built this project using HTML, CSS, JavaScript, and React. It supports basic CRUD functionality even without a backend.",
             "link":"https://quelacanaria.github.io/TodoListApp_React/",
             "frontend":["html5", "css3", "javascript", "react"],
             "backend":[],
             "database":[],
+            "deployment":["github"],
             "date":"November 2025"
         }
     }

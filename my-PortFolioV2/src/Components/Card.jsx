@@ -13,41 +13,42 @@ const techIcons = [
 function Card(){
     return(
         <>
-       
-          <div className=" h-full max-w-[800px] bg-green-xx p-[25px] mx-auto 2xl:w-[50%] xl:w-[60%] lg:w-[70%] md:w-[80%] sm:w-[80%] xs:w-[100%] ">
-            <p className="mb-[20px] 2xl:text-[1.3rem] xl:text-[1.3rem] lg:text-[1.3rem] md:text-[1.3rem] sm:text-[1.1rem] xs:text-[1rem]">
-              <i className="fa-solid fa-screwdriver-wrench"></i> My TechStack tools
+          <div className="w-full h-fit bg-green-xx block">
+          <div className=" h-[220px]  w-[90%] max-w-[1000px] min-w-[300px] bg-green-xx p-[5px] mx-auto  ">
+            <p className=" mb-[20px] text-center text-[35px]">
+              <i className="fa-solid fa-screwdriver-wrench"></i> My TechStack
             </p>
-            <div className="w-full flex justify-between ">
-              <button className="button-prev  h-[50px] w-[100px] rounded-[50px] self-center hover:scale-120 duration-300 active:scale-90 z-3 2xl:block xl:block lg:block md:block sm:hidden xs:hidden">
+            <div className="w-full flex justify-between">
+              <button className="button-prev h-[50px] w-[100px] rounded-[50px] self-center hover:scale-120 duration-300 active:scale-90 z-3 2xl:block xl:block lg:block md:block sm:hidden xs:hidden">
                 <i className="fa-solid fa-chevron-left text-[30px]"></i>
               </button>
               <Swiper
               modules={[Navigation, Autoplay]}
               grabCursor={true}
               loop={true}
-              slidesPerView={5}
-              spaceBetween={10}
               navigation = {{
                 nextEl: '.button-prev',  
                 prevEl: '.button-next',
               }}
               breakpoints = {{
+                              2000:{slidesPerView: 5, spaceBetween: 10},
                               1200:{slidesPerView: 5, spaceBetween: 10},
-                              900: { slidesPerView: 5, spaceBetween: 10},
-                              800: { slidesPerView: 5, spaceBetween: 10},
-                              700: { slidesPerView: 5, spaceBetween: 10},
-                              600: { slidesPerView: 5, spaceBetween: 10},
-                              500: { slidesPerView: 5, spaceBetween: 10},
-                              400: { slidesPerView: 5, spaceBetween: 2},
-                              300: { slidesPerView: 5, spaceBetween: 2},
-                              0: { slidesPerView: 5, spaceBetween: 8},
+                              1100:{slidesPerView: 5, spaceBetween: 10},
+                              1000:{slidesPerView: 4, spaceBetween: 10},
+                              900: { slidesPerView: 4, spaceBetween: 10},
+                              800: { slidesPerView: 4, spaceBetween: 10},
+                              700: { slidesPerView: 4, spaceBetween: 10},
+                              600: { slidesPerView: 3, spaceBetween: 10},
+                              500: { slidesPerView: 3, spaceBetween: 10},
+                              400: { slidesPerView: 2, spaceBetween: 2},
+                              300: { slidesPerView: 2, spaceBetween: 2},
+                              0: { slidesPerView: 2, spaceBetween: 8},
                             }}
               autoplay={{ delay: 1500, disableOnInteraction: false }}>
               {techIcons.map((icon) => (
                 <SwiperSlide key={icon}>
-                  <img className="hover:scale-110 duration-300 active:scale-90 mt-[6px] mx-[6px]" src={`./src/Components/image/${icon}.svg`} alt={icon} />
-                  <p className="2xl:text-[1.1rem] xl:text-[1.1rem] lg:text-[1.1rem] md:text-[1.1rem] sm:text-[1.1rem] xs:text-[.8rem]">{icon}</p>
+                    <img className="w-[100px] justify-self-center self-center rounded-[10px] mt-[6px] mx-[6px] " src={`./src/Components/image/${icon}.svg`} alt={icon} />
+                    <p className="text-[1.2rem] text-center break-all">{icon}</p>
                 </SwiperSlide>
               ))}
             </Swiper>
@@ -56,7 +57,7 @@ function Card(){
               </button>
             </div>
           </div>
-        
+        </div>
         </>
     )
 }

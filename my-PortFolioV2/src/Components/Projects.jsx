@@ -12,9 +12,8 @@ function Projects() {
 
     return(
         <>
-          <div className="w-full h-[600px] bg-green-xx content-center ">
-            <div className="max-w-[1100px] h-[470px] mx-auto">
-                <div className="main w-full h-full bg-fink-99 mx-auto rounded-2xl p-[10px]">
+          <div className="w-full h-fit bg-green-xx content-center ">
+                <div className="main max-w-[1100px] w-[90%] min-w-[320px] h-[470px] bg-fink-99 mx-auto rounded-2xl p-[10px]">
                     <Swiper
                         modules={[Navigation, Autoplay]}
                         grabCursor={true}
@@ -44,7 +43,7 @@ function Projects() {
                         des && Object.values(des.Projects).map((image, index) => (
                             <SwiperSlide key={index}>
                             <div className={`${flip} mb-[20px]`}>
-                                <div className='front max-w-[300px] min-w-[300px] max-h-[400px] min-h-[400px] bg-white p-[15px] rounded-[10px] shadow-header justify-self-center hover:translate-y-[-10px] duration-300 mt-[10px] mb-[20px] relative flex flex-col z-10'>
+                                <div className='front w-[280px] h-[400px] bg-white p-[15px] rounded-[10px] shadow-header justify-self-center hover:translate-y-[-10px] duration-300 mt-[10px] mb-[20px] relative flex flex-col z-10'>
                                     <img className='border-1' src={`./src/Components/projects-images/${image.pic}.png`} alt="" />
                                     <p className='text-[1.1rem] text-center'>{image.pic}</p>
                                     <p className='text-[1rem]'>{image.date}{image.description}</p>
@@ -58,7 +57,7 @@ function Projects() {
                                     <p>Frontend</p>
                                     <div className='flex justify-evenly'>
                                         {(image.frontend.length > 0 ? (image.frontend.map((front, index) => (
-                                            <img className='w-[40px]'  src={`./src/Components/image/${front}.svg`} alt={front} />
+                                            <img key={index} className='w-[40px]'  src={`./src/Components/image/${front}.svg`} alt={front} />
                                         ))) : (<p>- - - No Frontend - - -</p>))}
                                     </div>
 
@@ -92,10 +91,9 @@ function Projects() {
 
                     </Swiper>
                 </div>
-            </div>
 
             <div className="h-[100px] text-center content-center">
-                <a target="_blank" href="https://github.com/quelacanaria" className="w-[220px] h-[80px] text-[1.5rem] font-bold inline-block border-[2px] border-transparent content-center font-bold text-green-xx shadow-mine bg-white hover:scale-130 duration-300 hover:bg-green-xx hover:text-white hover:border-white hover:shadow-white active:scale-90">Visit my Github</a>
+                <a target="_blank" href="https://github.com/quelacanaria" className="w-[220px] h-[80px] text-[1.5rem] font-bold inline-block border-[2px] border-transparent content-center font-bold text-green-xx shadow-mine bg-white hover:scale-120 duration-300 hover:bg-green-xx hover:text-white hover:border-white hover:shadow-white active:scale-90">Visit my Github</a>
             </div>
 
           </div>

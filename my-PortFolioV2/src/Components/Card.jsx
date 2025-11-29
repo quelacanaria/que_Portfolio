@@ -19,7 +19,7 @@ function Card(){
               <i className="fa-solid fa-screwdriver-wrench"></i> My TechStack tools
             </p>
             <div className="w-full flex justify-between ">
-              <button className="button-prev border-2 h-[50px] w-[100px] rounded-[50px] self-center hover:scale-120 duration-300 active:scale-90 z-3 2xl:block xl:block lg:block md:block sm:hidden xs:hidden">
+              <button className="button-prev  h-[50px] w-[100px] rounded-[50px] self-center hover:scale-120 duration-300 active:scale-90 z-3 2xl:block xl:block lg:block md:block sm:hidden xs:hidden">
                 <i className="fa-solid fa-chevron-left text-[30px]"></i>
               </button>
               <Swiper
@@ -51,7 +51,7 @@ function Card(){
                 </SwiperSlide>
               ))}
             </Swiper>
-              <button className="button-next border-2 h-[50px] w-[100px] rounded-[50px] self-center hover:scale-120 duration-300 active:scale-90 z-1 2xl:block xl:block lg:block md:block sm:hidden xs:hidden ">
+              <button className="button-next h-[50px] w-[100px] rounded-[50px] self-center hover:scale-120 duration-300 active:scale-90 z-1 2xl:block xl:block lg:block md:block sm:hidden xs:hidden ">
                 <i className="fa-solid fa-chevron-right text-[30px] "></i>
               </button>
             </div>

@@ -12,7 +12,7 @@ function Projects() {
 
     return(
         <>
-          <div className="w-full h-[700px] bg-green-xx content-center ">
+          <div className="w-full h-[600px] bg-green-xx content-center ">
             <div className="max-w-[1100px] h-[470px] mx-auto">
                 <div className="main w-full h-full bg-fink-99 mx-auto rounded-2xl p-[10px]">
                     <Swiper

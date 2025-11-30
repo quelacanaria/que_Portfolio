@@ -7,20 +7,28 @@ import projectData from './proj-datas/Description.json'
 import './flip.css';
 function Projects() {
     const [flip, setFlip] = useState('card');
+    const [numProj, setNumProj] = useState(0);
     const des = projectData;
     console.log(des);
+    
+    React.useEffect(() => {
+        function countProjects() {
+        setNumProj(Object.keys(des.Projects).length);
+        }
+        countProjects();
+    }, []);
 
     return(
         <>
           <div className="w-full h-fit bg-green-xx content-center ">
                 <p className=" mb-[20px] text-center text-[35px]">
-                    <i className="fa-solid fa-folder-open"></i> My Projects
+                    <i className="fa-solid fa-folder-open"></i> My Projects({numProj})
                 </p>
                 <div className="main max-w-[1100px] w-[90%] min-w-[320px] h-[470px] bg-fink-99 mx-auto rounded-2xl p-[10px]">
                     <Swiper
                         modules={[Navigation, Autoplay]}
                         grabCursor={true}
-                        loop={true}
+                        // loop={true}
                         navigation = {{
                             nextEl: '.button-prev',
                             prevEl: '.button-next',
@@ -44,6 +52,7 @@ function Projects() {
                         >
                     {
                         des && Object.values(des.Projects).map((image, index) => (
+                            
                             <SwiperSlide key={index}>
                             <div className={`${flip} mb-[20px]`}>
                                 <div className='front w-[280px] h-[400px] bg-white p-[15px] rounded-[10px] shadow-header justify-self-center hover:translate-y-[-10px] duration-300 mt-[10px] mb-[20px] relative flex flex-col z-10'>
@@ -89,6 +98,7 @@ function Projects() {
                             </div>
                         
                             </SwiperSlide>
+                           
                         ))
                     }
 

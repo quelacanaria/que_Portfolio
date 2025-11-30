@@ -13,6 +13,9 @@ function Projects() {
     return(
         <>
           <div className="w-full h-fit bg-green-xx content-center ">
+                <p className=" mb-[20px] text-center text-[35px]">
+                    <i className="fa-solid fa-folder-open"></i> My Projects
+                </p>
                 <div className="main max-w-[1100px] w-[90%] min-w-[320px] h-[470px] bg-fink-99 mx-auto rounded-2xl p-[10px]">
                     <Swiper
                         modules={[Navigation, Autoplay]}
@@ -45,7 +48,7 @@ function Projects() {
                             <div className={`${flip} mb-[20px]`}>
                                 <div className='front w-[280px] h-[400px] bg-white p-[15px] rounded-[10px] shadow-header justify-self-center hover:translate-y-[-10px] duration-300 mt-[10px] mb-[20px] relative flex flex-col z-10'>
                                     <img className='border-1' src={`./src/Components/projects-images/${image.pic}.png`} alt="" />
-                                    <p className='text-[1.1rem] text-center'>{image.pic}</p>
+                                    <p className='text-[1rem] text-center'>{image.pic}</p>
                                     <p className='text-[1rem]'>{image.date}{image.description}</p>
                                     <div className='mt-auto flex gap-4 justify-evenly'>
                                          
@@ -64,21 +67,21 @@ function Projects() {
                                     <p>Backend</p>
                                     <div className='flex justify-evenly'>
                                         {(image.backend.length > 0 ? (image.backend.map((front, index) => (
-                                            <img className='w-[40px]'  src={`./src/Components/image/${front}.svg`} alt={front} />
+                                            <img key={index} className='w-[40px]'  src={`./src/Components/image/${front}.svg`} alt={front} />
                                         ))) : (<p>- - - No Backend - - -</p>))}
                                     </div>
 
                                     <p>Database</p>
                                     <div className='flex justify-evenly'>
                                         {(image.database.length > 0 ? (image.database.map((front, index) => (
-                                            <img className='w-[40px]'  src={`./src/Components/image/${front}.svg`} alt={front} />
+                                            <img key={index} className='w-[40px]'  src={`./src/Components/image/${front}.svg`} alt={front} />
                                         ))) : (<p>- - - No Database - - -</p>))}
                                     </div>
 
                                     <p>Deployment</p>
                                     <div className='flex justify-evenly'>
                                         {(image.deployment.length > 0 ? (image.deployment.map((front, index) => (
-                                            <img className='w-[40px]'  src={`./src/Components/image/${front}.svg`} alt={front} />
+                                            <img key={index} className='w-[40px]'  src={`./src/Components/image/${front}.svg`} alt={front} />
                                         ))) : (<p>- - - No Deployment - - -</p>))}
                                     </div>
                                     

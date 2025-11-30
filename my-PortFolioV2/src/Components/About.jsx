@@ -7,7 +7,7 @@ function About() {
     <div className="w-full flex justify-center items-center 2xl:h-[550px] xl:h-[550px] lg:h-[550px] md:h-[550px] sm:h-[600px] xs:h-[800px] 2xs:h-[1050px] bg-green-xx">
         <div className=" h-[95%] bg-fink-99 rounded-[10px] content-center mx-auto 2xl:w-[700px] xl:w-[700px] md:w-[700px] sm:w-[600px] xs:w-[400px] 2xs:w-[300px] ">
           <div className="w-[90%] h-[90%] bg-white mx-auto p-[5px] rounded-[10px] hover:translate-y-[-15px] duration-300 shadow-gg">
-            <p className="text-center self-center text-[35px] row-span-1 col-span-4 ">About</p>
+            <p className="text-center self-center text-[35px] row-span-1 col-span-4 "><i className="fa-solid fa-clipboard"></i> About</p>
             <p className="mx-[2px] text-[1rem]"> Hi! I’m Quekeneth S. Lacanaria, but you can call me Keneth. 
               I’m a Computer Engineering graduate from Bestlink College of the Philippines with a strong passion 
               for web development. For me, coding isn’t just a job it’s a hobby that allows me to be creative and 

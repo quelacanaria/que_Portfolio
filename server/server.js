@@ -19,7 +19,7 @@ const transporter = nodemailer.createTransport({
         pass: userpassword
     },
 });
-// console.log(transporter);
+console.log(transporter);
 
 app.get('/', (req, res) => {
     res.send('hello');
@@ -68,26 +68,41 @@ const userMailOptions = {
   html: userHtml,
 };
 
-transporter.sendMail(adminMailOptions, (error, info) => {
-  if (error) {
-    console.error('Error sending email to admin:', error);
-    return res.status(500).json({ error: 'Failed to send email to admin.' });
-  }
+// transporter.sendMail(adminMailOptions, (error, info) => {
+//   if (error) {
+//     console.error('Error sending email to admin:', error);
+//     return res.status(500).json({ error: 'Failed to send email to admin.' });
+//   }
 
-  console.log('Admin email sent:', info.response);
+//   console.log('Admin email sent:', info.response);
 
-  transporter.sendMail(userMailOptions, (error, info) => {
-    if (error) {
-      console.error('Error sending acknowledgment email to user:', error);
-      return res.status(500).json({ error: 'Failed to send acknowledgment email.' });
-    }
+//   transporter.sendMail(userMailOptions, (error, info) => {
+//     if (error) {
+//       console.error('Error sending acknowledgment email to user:', error);
+//       return res.status(500).json({ error: 'Failed to send acknowledgment email.' });
+//     }
 
-    console.log('Acknowledgment email sent:', info.response);
-    res.status(200).json({ success: true, message: 'Emails sent successfully!' });
-  });
-});
+//     console.log('Acknowledgment email sent:', info.response);
+//     res.status(200).json({ success: true, message: 'Emails sent successfully!' });
+//   });
+// });
+// const sendMail = async() => {
+//   try{
+//     const adminInfo = await transporter.sendMail(adminMailOptions);
+//     console.log('Admin email sent:', adminInfo.response);
+//     const userInfo = await transporter.sendMail(userMailOptions);
+//     if(!userInfo){
+      
+//     res.status(200).json({ success: true, message: 'Emails sent successfully!' });
+//     }
 
-
+//     console.log('Acknowledgment email sent:', userInfo.response);
+//   } catch (error) {
+//     console.error('Error sending emails:', error);
+//     res.status(500).json({ error: 'Failed to send emails.' });
+//   }
+// }
+// sendMail();
 })
 
 

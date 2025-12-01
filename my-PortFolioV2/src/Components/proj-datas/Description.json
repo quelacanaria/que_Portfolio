@@ -48,11 +48,11 @@
             "id":5,
             "pic":"BooksCrude",
             "description":" – I created this project to learn MERN stack. It's a Book CRUD app exploring my react and learning server's, api-routings, request, response, models, axios, testing api's using postman, and mongodb.",
-            "link":"https://quelacanaria.github.io/TodoListApp_React/",
+            "link":"https://my-frontend-7rll.onrender.com/",
             "frontend":["html5", "css3", "javascript", "react"],
             "backend":["nodejs", "expressjs", "postman"],
             "database":["mongodb"],
-            "deployment":["github"],
+            "deployment":["render"],
             "date":"November 2025"
         }
     }

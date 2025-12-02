@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 function Forms(){
-    const url = 'http://localhost:5000/api/post'
+    const url = 'http://localhost:5000/api/post';
+    const [delIndex, setDelIndex] = useState(null);
     const [inputs, setInputs] = useState({
         name: '',
         subject: '',
@@ -9,19 +10,35 @@ function Forms(){
         phone: '',
         message: ''
     });
-const handlerSubmit = async(event) => {
+
+const handlerSubmit = (event, index) => {
     event.preventDefault();
+    setDelIndex(index);
+    }
+
+const submit = async(event) => {
+    setDelIndex(null);
     try{
         const response = await axios.post(url, inputs)
         console.log(response.data)
+        setInputs({
+            name: '',
+            subject: '',
+            email: '',
+            phone: '',
+            message: ''
+        })
 
     }catch(error){
         console.log('error -> ', error.message);
 
     }finally{
-        event.target.reset();
+        
     }       
-    }
+
+}
+
+    
     
 
     return(
@@ -31,15 +48,15 @@ const handlerSubmit = async(event) => {
                     <form onSubmit={handlerSubmit} className="w-[80%] min-w-[300px] h-[85%] bg-white mx-auto rounded-2xl grid p-[20px] grid grid-cols-6  2xl:grid-rows-9 xl:grid-rows-9 lg:grid-rows-9 md:grid-rows-9 sm:grid-rows-12 xs:grid-rows-12 gap-x-0 md:gap-x-[10px] gap-y-[5px] hover:scale-105 duration-300 shadow-gg">
                         <p className="col-span-6 row-span-1 text-center self-center text-[35px] "><i className="fa-solid fa-phone"></i> Contact Me</p>
                         <label className="text-[1.2rem] self-center justify-self-start md:justify-self-end row-span-1 2xl:col-span-2 xl:col-span-2 lg:col-span-2 md:col-span-2 xs:col-span-6" htmlFor="">Company Name:</label>
-                        <input name='name' onChange={event => setInputs({...inputs, name: event.target.value})} className="text-[1.2rem] h-[45px] p-[5px] border-2 col-span-8 md:col-span-3 row-span-1" placeholder="CompanyName.Inc" type="text" required/>
+                        <input value={inputs.name} name='name' onChange={event => setInputs({...inputs, name: event.target.value})} className="text-[1.2rem] h-[45px] p-[5px] border-2 col-span-8 md:col-span-3 row-span-1" placeholder="CompanyName.Inc" type="text" required/>
                         <label className="text-[1.2rem] self-center justify-self-start md:justify-self-end row-span-1 2xl:col-span-2 xl:col-span-2 lg:col-span-2 md:col-span-2 xs:col-span-6" htmlFor="">Subject:</label>
-                        <input name='name' onChange={event => setInputs({...inputs, subject: event.target.value})} className="text-[1.2rem] h-[45px] p-[5px] border-2 col-span-8 md:col-span-3 row-span-1" placeholder="Job Offer" type="text" required/>
+                        <input value={inputs.subject} name='subject' onChange={event => setInputs({...inputs, subject: event.target.value})} className="text-[1.2rem] h-[45px] p-[5px] border-2 col-span-8 md:col-span-3 row-span-1" placeholder="Job Offer" type="text" required/>
                         <label className="text-[1.2rem] self-center justify-self-start md:justify-self-end row-span-1 2xl:col-span-2 xl:col-span-2 lg:col-span-2 md:col-span-2 xs:col-span-6" htmlFor="">Email:</label>
-                        <input name='email' onChange={event => setInputs({...inputs, email: event.target.value})} className="text-[1.2rem] h-[45px] p-[5px] border-2 col-span-8 md:col-span-3 row-span-1" placeholder="johndoe@123.com" type="email" required/>
+                        <input value={inputs.email} name='email' onChange={event => setInputs({...inputs, email: event.target.value})} className="text-[1.2rem] h-[45px] p-[5px] border-2 col-span-8 md:col-span-3 row-span-1" placeholder="johndoe@123.com" type="email" required/>
                         <label className="text-[1.2rem] self-center justify-self-start md:justify-self-end row-span-1 2xl:col-span-2 xl:col-span-2 lg:col-span-2 md:col-span-2 xs:col-span-6" htmlFor="">Contact Number:</label>
-                        <input name='phone' onChange={event => setInputs({...inputs, phone: event.target.value})} className="text-[1.2rem] h-[45px] p-[5px] border-2 col-span-8 md:col-span-3 row-span-1 [&::-webkit-inner-spin-button]:hidden" placeholder="09123456789" inputMode="numeric" type="number" required/>
+                        <input value={inputs.phone} name='phone' onChange={event => setInputs({...inputs, phone: event.target.value})} className="text-[1.2rem] h-[45px] p-[5px] border-2 col-span-8 md:col-span-3 row-span-1 [&::-webkit-inner-spin-button]:hidden" placeholder="09123456789" inputMode="numeric" type="number" required/>
                         <label className="text-[1.2rem] self-center justify-self-start md:justify-self-end row-span-1 2xl:col-span-2 xl:col-span-2 lg:col-span-2 md:col-span-2 xs:col-span-6" htmlFor="">Message:</label>
-                        <textarea name='' onChange={event => setInputs({...inputs, message: event.target.value})} className="text-[1.2rem] h-[80px] p-[5px] border-2 col-span-8 md:col-span-3 row-span-2" placeholder="Hi Quekeneth nice meeting you!" type="text" required/>
+                        <textarea value={inputs.message} name='message' onChange={event => setInputs({...inputs, message: event.target.value})} className="text-[1.2rem] h-[80px] p-[5px] border-2 col-span-8 md:col-span-3 row-span-2" placeholder="Hi Quekeneth nice meeting you!" type="text" required/>
                         <button className="w-[90%] md:w-[270px] h-[70px] text-[1.2rem] justify-self-center self-center border-2 bg-fink-99 
                         text-white border-transparent shadow-mine hover:bg-white hover:text-fink-99 hover:border-fink-99
                          hover:shadow-fink-99 hover:scale-120 active:scale-90 active:shadow-none duration-300 col-span-6 row-span-2 ">Send</button>
@@ -63,6 +80,35 @@ const handlerSubmit = async(event) => {
                     </div>
                 </div>
             </div>
+            {delIndex !== null && (
+            <main className="w-full h-screen fixed top-[0px] left-[0px] bg-me-100 flex justify-center items-center">
+                <section className="w-[280px] h-[360px] p-[10px] bg-white rounded-2xl overflow-hidden shadow-mine hover:scale-105 duration-300">
+                    <p>Double-check your details. A verification email will be sent—if you don’t receive it, your email may be incorrect.</p><br />
+                    <div className='mx-[10px] mb-[10px]'>
+                        <p className='break-all'><strong>Name:</strong> {inputs.name}</p>
+                        <p><strong>Subject:</strong> {inputs.subject}</p>
+                        <p><strong>Email:</strong> {inputs.email}</p>
+                        <p><strong>Phone:</strong> {inputs.phone}</p>
+                        <p><strong>Message:</strong> {inputs.message}</p>
+                    </div>
+                    <button className="mx-[5px] w-[70px] h-[40px] border-2-transparent rounded-lg font-bold text-white bg-red-500 shadow-mine hover:scale-115 active:scale-90 duration-300" onClick={() => submit()}>Send</button>
+                    <button className="mx-[5px] w-[70px] h-[40px] border-2-transparent rounded-lg font-bold text-white bg-yellow-500 shadow-mine hover:scale-115 active:scale-90 duration-300" onClick={() => setDelIndex(null)}>Back</button>
+                </section>
+            </main>
+            )}
+            <section className='fixed top-0 left-0 w-full h-full flex justify-center items-center bg-me-100 z-9999'>
+                <div className="h-[300px] w-[300px] mx-auto flex justify-center items-center flex-col bg-white p-[10px] rounded-[20px]">
+                    <svg className="w-[120px] h-[120px] rounded-[50%] relative animation-[:fill_0.4s_ease-in-out_0.4s_forwards,scale_0.3s_ease-in-out_0.9s_both]" viewBox="0 0 52 52">
+                        <circle className="stroke-dasharray-[166] stroke-dashoffset-[166] " cx="26" strokeWidth="4" stroke="green" cy="26" r="25" fill="none"/>
+                        <path className="checkmark__check" fill="none" stroke="green" strokeWidth="4" d="M14 27l7 7 16-16"/>
+                    </svg>
+                    <div className="message text-center">
+                        <h2>Thank you!</h2>
+                        <p>Your message successfully sent.</p>
+                    </div>
+                </div>
+                
+            </section>
         </>
     )
 }

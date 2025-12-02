@@ -54,8 +54,8 @@ function Projects() {
                         des && Object.values(des.Projects).map((image, index) => (
                             
                             <SwiperSlide key={index}>
-                            <div className={`${flip} mb-[20px]`}>
-                                <div className='front w-[280px] h-[400px] bg-white p-[15px] rounded-[10px] shadow-header justify-self-center hover:translate-y-[-10px] duration-300 mt-[10px] mb-[20px] relative flex flex-col z-10'>
+                            <div className={`${flip} mb-[20px] `}>
+                                <div className='front w-[280px] h-[400px] bg-white p-[15px] rounded-[10px] shadow-header justify-self-center hover:translate-y-[-10px] duration-300 mt-[10px] mb-[20px] relative flex flex-col '>
                                     <img className='border-1' src={`./src/Components/projects-images/${image.pic}.png`} alt="" />
                                     <p className='text-[1rem] text-center'>{image.pic}</p>
                                     <p className='text-[1rem]'>{image.date}{image.description}</p>

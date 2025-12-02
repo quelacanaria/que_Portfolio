@@ -2,17 +2,16 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const nodemailer = require('nodemailer');
-const verifier = require('email-verify');
-
 const app = express();
+const nodemailer = require('nodemailer');
 
 const PORT = process.env.PORT;
 const user = process.env.USER;
 const userpassword = process.env.USERPASSWORD;
 
-app.use(cors());
+app.use(cors());    
 app.use(bodyParser.json());
+
 
 const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -22,88 +21,78 @@ const transporter = nodemailer.createTransport({
     },
 });
 
+// console.log(transporter);
+
 app.get('/', (req, res) => {
     res.send('hello');
 });
 
 app.post('/api/post', (req, res) => {
-    const { name, subject, email, phone, message } = req.body;
+    const {name, subject, email, phone, message} = req.body;
 
-    if (!name || !subject || !email || !phone || !message) {
-        return res.status(400).json({ error: 'All fields are required.' });
+    if(!name || !subject || !email || !phone || !message){
+        return res.status(400).json({error: 'all fields a required'})
     }
 
-    // ⭐ Step 1: Verify email exists
-    verifier.verify(email, (err, info) => {
-        if (err) {
-            console.error("Verification error:", err);
-            return res.status(500).json({ error: "Error verifying email." });
-        }
+const adminHtml = `
+  <div style="font-family: Arial, sans-serif; padding: 20px; color: #333;">
+    <h2> ${subject}</h2>
+    <p><strong>Name:</strong> ${name}</p>
+    <p><strong>Email:</strong> ${email}</p>
+    <p><strong>Phone:</strong> ${phone}</p>
+    <p><strong>Message:</strong></p>
+    <p>${message}</p>
+  </div>
+`;
 
-        if (!info.success) {
-            return res.status(400).json({ error: "Email address does not exist." });
-        }
 
-        // ⭐ Step 2: If email is real, send both emails
+const userHtml = `
+  <div style="font-family: Arial, sans-serif; padding: 20px; color: #333;">
+    <h2>Thanks for Reaching Out!</h2>
+    <p>Hi ${name},</p>
+    <p>Thank you for contacting me. I’ve received your message and I’ll get back to you as soon as possible.</p>
+    <p>Looking forward to connecting with you!</p>
+    <p>Best regards, </p>
+    <p>Quekeneth S. Lacanaria</p>
+  </div>
+`;
 
-        const adminHtml = `
-          <div style="font-family: Arial, sans-serif; padding: 20px; color: #333;">
-            <h2>${subject}</h2>
-            <p><strong>Name:</strong> ${name}</p>
-            <p><strong>Email:</strong> ${email}</p>
-            <p><strong>Phone:</strong> ${phone}</p>
-            <p><strong>Message:</strong></p>
-            <p>${message}</p>
-          </div>
-        `;
+const adminMailOptions = {
+  from: email,
+  to: user, 
+  subject: `${subject}`,
+  html: adminHtml,
+};
 
-        const userHtml = `
-          <div style="font-family: Arial, sans-serif; padding: 20px; color: #333;">
-            <h2>Thanks for Reaching Out!</h2>
-            <p>Hi ${name},</p>
-            <p>Thank you for contacting me. I’ve received your message and I’ll get back to you as soon as possible.</p>
-            <p>Best regards,<br/>Quekeneth</p>
-          </div>
-        `;
+const userMailOptions = {
+  from: user, 
+  to: email, 
+  subject: 'Thanks for Reaching Out!',
+  html: userHtml,
+};
 
-        const adminMailOptions = {
-            from: email,
-            to: user,
-            subject: subject,
-            html: adminHtml,
-        };
+transporter.sendMail(adminMailOptions, (error, info) => {
+  if (error) {
+    console.error('Error sending email to admin:', error);
+    return res.status(500).json({ error: 'Failed to send email to admin.' });
+  }
 
-        const userMailOptions = {
-            from: user,
-            to: email,
-            subject: 'Thank you for contacting us!',
-            html: userHtml,
-        };
+  console.log('Admin email sent:', info.response);
 
-        // Send to admin
-        transporter.sendMail(adminMailOptions, (error, info) => {
-            if (error) {
-                console.error('Error sending email to admin:', error);
-                return res.status(500).json({ error: 'Failed to send email to admin.' });
-            }
+  transporter.sendMail(userMailOptions, (error, info) => {
+    if (error) {
+      console.error('Error sending acknowledgment email to user:', error);
+      return res.status(500).json({ error: 'Failed to send acknowledgment email.' });
+    }
 
-            console.log('Admin email sent:', info.response);
-
-            // Send auto-reply to user
-            transporter.sendMail(userMailOptions, (error, info) => {
-                if (error) {
-                    console.error('Error sending acknowledgment email:', error);
-                    return res.status(500).json({ error: 'Failed to send acknowledgment email.' });
-                }
-
-                console.log('Acknowledgment email sent:', info.response);
-                res.status(200).json({ success: true, message: 'Emails sent successfully!' });
-            });
-        });
-
-    });
+    console.log('Acknowledgment email sent:', info.response);
+    res.status(200).json({ success: true, message: 'Emails sent successfully!', data: info.response });
+  });
 });
+
+})
++
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
-});
+})

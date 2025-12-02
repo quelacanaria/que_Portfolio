@@ -4,7 +4,7 @@ import { Navigation, Autoplay } from "swiper/modules";
 import 'swiper/css';    
 import "swiper/css/navigation";
 import projectData from './proj-datas/Description.json'
-import './flip.css';
+import './css/flip.css';
 function Projects() {
     const [flip, setFlip] = useState('card');
     const [numProj, setNumProj] = useState(0);

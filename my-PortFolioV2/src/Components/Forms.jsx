@@ -1,8 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import SuccessModal from './SuccessModal';
+import Links from './Links'
+import LoadingModal from './LoadingModal';
+import FailedModal from './FailedModal';
 function Forms(){
     const url = 'http://localhost:5000/api/post';
-    const [delIndex, setDelIndex] = useState(null);
+    const [sendMessage, setSendMessage] = useState(null);
+    const [success, setSuccess] = useState('hidden');
+    const [loading, setLoading] = useState('hidden');
+    const [failed, setFailed] = useState('hidden');
     const [inputs, setInputs] = useState({
         name: '',
         subject: '',
@@ -13,27 +20,39 @@ function Forms(){
 
 const handlerSubmit = (event, index) => {
     event.preventDefault();
-    setDelIndex(index);
-    }
+    setSendMessage(index);
+    } 
 
 const submit = async(event) => {
-    setDelIndex(null);
     try{
-        const response = await axios.post(url, inputs)
-        console.log(response.data)
+        setLoading('flex');
+        const response = await axios.post(url, inputs);
+        console.log(response.data);
+    }catch(error){
+        console.log('error -> ', error.message);
+        setTimeout(() => {
+            setFailed('flex');
+            setTimeout(() => {
+                setFailed('hidden');
+            }, 4000)
+        }, 0)
+
+    }finally{
+        setLoading('hidden');
+        setSendMessage(null);
+        setTimeout(() => {
+            setSuccess('flex');
+            setTimeout(() => {
+                setSuccess('hidden');
+            }, 4000)
+        }, 0)
         setInputs({
             name: '',
             subject: '',
             email: '',
             phone: '',
             message: ''
-        })
-
-    }catch(error){
-        console.log('error -> ', error.message);
-
-    }finally{
-        
+            });
     }       
 
 }
@@ -62,28 +81,14 @@ const submit = async(event) => {
                          hover:shadow-fink-99 hover:scale-120 active:scale-90 active:shadow-none duration-300 col-span-6 row-span-2 ">Send</button>
                     </form>
                 </div>
-                <div className="w-full h-[600px] flex items-center">
-                    <div className="w-[80%] min-w-[300px] max-w-[600px] h-[450px] bg-fink-99 mx-auto rounded-2xl flex items-center justify-center">
-                        <div className="w-[90%] min-w-[250px] max-w-[550px] h-[400px] bg-white rounded-2xl grid grid-cols-4 grid-rows-5 gap-x-[5px] gap-y-[5px] pb-[20px] hover:translate-y-[-10px] duration-300 shadow-gg">
-                            <p className="text-center self-center text-[35px] row-span-1 col-span-4 "><i className="fa-solid fa-link"></i> My Links</p>
-                            <a className="row-span-1 col-span-1 inline-block justify-self-end self-center" href="#"><img className="w-[50px] hover:scale-120 active:scale-90 duration-300" src="./src/Components/image/whatsApp.svg" alt="" /></a>
-                            <p className="row-span-1 col-span-3 inline-block self-center break-all pr-[25px]  text-[1.1rem] md:text-[1.2rem]">+639510010846</p>
-                            <a className="row-span-1 col-span-1 inline-block justify-self-end self-center" target="_blank" href="mailto:lacanariaquekeneth46@gmail.com"><img className="w-[50px] hover:scale-120 active:scale-90 duration-300" src="./src/Components/image/gmail1.svg" alt="" /></a>
-                            <p className="row-span-1 col-span-3 inline-block self-center break-all pr-[25px] text-[1.1rem] md:text-[1.2rem]">lacanariaquekeneth46@gmail.com</p>
-                            <a className="row-span-1 col-span-1 inline-block justify-self-end self-center" target="_blank" href="https://www.facebook.com/queque.neth"><img className="w-[50px] hover:scale-120 active:scale-90 duration-300" src="./src/Components/image/facebook.svg" alt="" /></a>
-                            <p className="row-span-1 col-span-3 inline-block self-center break-all pr-[25px] text-[1.1rem] md:text-[1.2rem]">https://www.facebook.com/queque.neth</p>
-                            <a className="row-span-1 col-span-1 inline-block justify-self-end self-center" target="_blank" href="https://github.com/quelacanaria"><img className="w-[50px] hover:scale-120 active:scale-90 duration-300" src="./src/Components/image/github.svg" alt="" /></a>
-                            <p className="row-span-1 col-span-3 inline-block self-center break-all pr-[25px] text-[1.1rem] md:text-[1.2rem]">https://github.com/quelacanaria</p>
-                            <a className="row-span-1 col-span-1 inline-block justify-self-end self-center" target="_blank" href="https://www.linkedin.com/in/quekeneth/"><img className="w-[50px] hover:scale-120 active:scale-90 duration-300" src="./src/Components/image/linkedin.svg" alt="" /></a>
-                            <p className="row-span-1 col-span-3 inline-block self-center break-all pr-[25px]  text-[1.1rem] md:text-[1.2rem]">https://www.linkedin.com/in/quekeneth/</p>
-                        </div>
-                    </div>
-                </div>
+                <Links/>
             </div>
-            {delIndex !== null && (
-            <main className="w-full h-screen fixed top-[0px] left-[0px] bg-me-100 flex justify-center items-center">
-                <section className="w-[280px] h-[360px] p-[10px] bg-white rounded-2xl overflow-hidden shadow-mine hover:scale-105 duration-300">
-                    <p>Double-check your details. A verification email will be sent—if you don’t receive it, your email may be incorrect.</p><br />
+            {sendMessage !== null && (
+            <main className="w-full h-screen fixed top-[0px] left-[0px] bg-me-100 flex justify-center items-center z-[9999]">
+                <section className="w-[280px] h-[360px] p-[10px] bg-white rounded-2xl overflow-hidden shadow-mine hover:scale-105 duration-300 grid">
+                    <div>
+                        <p>Double-check your details. A verification email will be sent—if you don’t receive it, your email may be incorrect.</p>
+                    </div>
                     <div className='mx-[10px] mb-[10px]'>
                         <p className='break-all'><strong>Name:</strong> {inputs.name}</p>
                         <p><strong>Subject:</strong> {inputs.subject}</p>
@@ -91,24 +96,16 @@ const submit = async(event) => {
                         <p><strong>Phone:</strong> {inputs.phone}</p>
                         <p><strong>Message:</strong> {inputs.message}</p>
                     </div>
-                    <button className="mx-[5px] w-[70px] h-[40px] border-2-transparent rounded-lg font-bold text-white bg-red-500 shadow-mine hover:scale-115 active:scale-90 duration-300" onClick={() => submit()}>Send</button>
-                    <button className="mx-[5px] w-[70px] h-[40px] border-2-transparent rounded-lg font-bold text-white bg-yellow-500 shadow-mine hover:scale-115 active:scale-90 duration-300" onClick={() => setDelIndex(null)}>Back</button>
+                    <div className='flex justify-evenly align-bottom'>
+                        <button className="mx-[5px] w-[90px] h-[50px] border-[5px] border-fink-99 rounded-lg font-bold text-fink-99 bg-transparent shadow-fink-99 hover:scale-115 active:scale-90 duration-300" onClick={() => submit()}>Send</button>
+                        <button className="mx-[5px] w-[90px] h-[50px] border-2-transparent rounded-lg font-bold text-white bg-fink-99 shadow-mine hover:scale-115 active:scale-90 duration-300" onClick={() => setSendMessage(null)}>Cancel</button>
+                    </div>
                 </section>
             </main>
             )}
-            <section className='fixed top-0 left-0 w-full h-full flex justify-center items-center bg-me-100 z-9999'>
-                <div className="h-[300px] w-[300px] mx-auto flex justify-center items-center flex-col bg-white p-[10px] rounded-[20px]">
-                    <svg className="w-[120px] h-[120px] rounded-[50%] relative animation-[:fill_0.4s_ease-in-out_0.4s_forwards,scale_0.3s_ease-in-out_0.9s_both]" viewBox="0 0 52 52">
-                        <circle className="stroke-dasharray-[166] stroke-dashoffset-[166] " cx="26" strokeWidth="4" stroke="green" cy="26" r="25" fill="none"/>
-                        <path className="checkmark__check" fill="none" stroke="green" strokeWidth="4" d="M14 27l7 7 16-16"/>
-                    </svg>
-                    <div className="message text-center">
-                        <h2>Thank you!</h2>
-                        <p>Your message successfully sent.</p>
-                    </div>
-                </div>
-                
-            </section>
+            <LoadingModal showLoading={loading}/>
+            <SuccessModal showSuccess = {success} />
+            <FailedModal showFailed={failed}/>
         </>
     )
 }

@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import SuccessModal from './SuccessModal';
-import Links from './Links'
 import LoadingModal from './LoadingModal';
 import FailedModal from './FailedModal';
-function Forms(){
+function Forms({Id}){
     const url = 'http://localhost:5000/api/post';
     const [sendMessage, setSendMessage] = useState(null);
     const [success, setSuccess] = useState('hidden');
@@ -62,7 +61,7 @@ const submit = async(event) => {
 
     return(
         <>
-            <div className="w-full h-fit bg-green-xx content-center">
+            <div id={Id} className="w-full h-fit bg-green-xx content-center">
                 <div className="w-[80%] min-w-[320px] max-w-[800px] h-[900px] md:h-[560px] bg-fink-99 mx-auto rounded-2xl content-center">
                     <form onSubmit={handlerSubmit} className="w-[80%] min-w-[300px] h-[85%] bg-white mx-auto rounded-2xl grid p-[20px] grid grid-cols-6  2xl:grid-rows-9 xl:grid-rows-9 lg:grid-rows-9 md:grid-rows-9 sm:grid-rows-12 xs:grid-rows-12 gap-x-0 md:gap-x-[10px] gap-y-[5px] hover:scale-105 duration-300 shadow-gg">
                         <p className="col-span-6 row-span-1 text-center self-center text-[35px] "><i className="fa-solid fa-phone"></i> Contact Me</p>
@@ -81,7 +80,6 @@ const submit = async(event) => {
                          hover:shadow-fink-99 hover:scale-120 active:scale-90 active:shadow-none duration-300 col-span-6 row-span-2 ">Send</button>
                     </form>
                 </div>
-                <Links/>
             </div>
             {sendMessage !== null && (
             <main className="w-full h-screen fixed top-[0px] left-[0px] bg-me-100 flex justify-center items-center z-[9999]">

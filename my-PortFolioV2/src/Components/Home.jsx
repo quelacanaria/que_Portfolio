@@ -1,10 +1,10 @@
 import Card from "./Card"
 import React, { useEffect } from "react";
-function Home(){
+function Home({Id}){
 
     return(
         <>
-          <main className="mt-[60px] md:flex w-full h-[368px] bg-green-xx justify-center items-center 2xl:h-[368px] xl:h-[368px] lg:h-[368px] md:h-[368px] sm:h-[500px] xs:h-[500px] 2xs:h-[500px]"> 
+          <main id={Id} className="mt-0 md:mt-[60px] md:flex w-full h-[368px] bg-green-xx justify-center items-center 2xl:h-[368px] xl:h-[368px] lg:h-[368px] md:h-[368px] sm:h-[500px] xs:h-[500px] 2xs:h-[500px]"> 
             <section className="bg-green-xx w-[40%] justify-end flex items-center lg:p-0 lg:w-[40%] lg:justify-end md:p-0 md:w-[40%] md:justify-end sm:pt-[30px] sm:w-full sm:justify-center xs:p-[30px] 2xs:p-[30px] xs:w-full 2xs:w-full xs:justify-center 2xs:justify-center">
                 <div className="w-[250px] h-[250px] bg-green-xx rounded-[150px] overflow-hidden shadow-xx">
                     <img className="w-[90%] justify-self-center mt-[10px]"  src="./src/Components/image/profile.png" alt="" />
@@ -20,7 +20,8 @@ function Home(){
                     <p className="2xl:text-[1.3rem] xl:text-[1.3rem] lg:text-[1.3rem] md:text-[1.3rem] sm:text-[1.1rem] xs:text-[1rem]"> <i className="fa-solid fa-location-dot"></i> North Fairview Quezon City</p>
                 </div>
             </section>
-          </main>            
+          </main>  
+          <Card/>           
         </>
     )
 }

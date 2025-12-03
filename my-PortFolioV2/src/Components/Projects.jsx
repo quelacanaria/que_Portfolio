@@ -5,7 +5,7 @@ import 'swiper/css';
 import "swiper/css/navigation";
 import projectData from './proj-datas/Description.json'
 import './css/flip.css';
-function Projects() {
+function Projects({Id}) {
     const [flip, setFlip] = useState('card');
     const [numProj, setNumProj] = useState(0);
     const des = projectData;
@@ -20,7 +20,7 @@ function Projects() {
 
     return(
         <>
-          <div className="w-full h-fit bg-green-xx content-center ">
+          <div id={Id} className="w-full h-fit bg-green-xx content-center pb-[100px]">
                 <p className=" mb-[20px] text-center text-[35px]">
                     <i className="fa-solid fa-folder-open"></i> My Projects({numProj})
                 </p>
@@ -104,12 +104,7 @@ function Projects() {
 
                     </Swiper>
                 </div>
-
-            <div className="h-[100px] text-center content-center">
-                <a target="_blank" href="https://github.com/quelacanaria" className="w-[220px] h-[80px] text-[1.5rem] font-bold inline-block border-[2px] border-transparent content-center font-bold text-green-xx shadow-mine bg-white hover:scale-120 duration-300 hover:bg-green-xx hover:text-white hover:border-white hover:shadow-white active:scale-90">Visit my Github</a>
             </div>
-
-          </div>
         </>
     )
 }

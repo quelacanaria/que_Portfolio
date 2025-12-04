@@ -1,4 +1,4 @@
-import './css/loadingAnimation.css';
+import '../css/loadingAnimation.css';
 
 function LoadingModal({showLoading = 'hidden'}) {
 

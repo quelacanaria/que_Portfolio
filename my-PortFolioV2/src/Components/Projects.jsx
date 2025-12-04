@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
+import useWindowHeight from './customHooks/useWindowHeight';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";  
 import 'swiper/css';    
 import "swiper/css/navigation";
 import projectData from './proj-datas/Description.json'
 import './css/flip.css';
-function Projects({Id}) {
+import './css/projectsAnimate.css'
+function Projects({currentSection}) {
+    const windowHeight = useWindowHeight();
     const [flip, setFlip] = useState('card');
     const [numProj, setNumProj] = useState(0);
     const des = projectData;
@@ -18,13 +21,16 @@ function Projects({Id}) {
         countProjects();
     }, []);
 
+    const project = (windowHeight >= 486 && windowHeight <= 677) ? (currentSection === 'projects' ? 'titleAnimate block': 'invisible') : 'block';
+    const projectTitle = (windowHeight >= 486 && windowHeight <= 677) ? (currentSection === 'projects' ? 'ProjectsAnimate block': 'hidden') : 'block';
+
     return(
         <>
-          <div id={Id} className="w-full h-fit bg-green-xx content-center pb-[100px]">
-                <p className=" mb-[20px] text-center text-[35px]">
+          <div className="w-full h-[590px] bg-green-xx content-center pb-[100px]">
+                <p className={` mb-[10px] text-center text-[35px] ${project}`}>
                     <i className="fa-solid fa-folder-open"></i> My Projects({numProj})
                 </p>
-                <div className="main max-w-[1100px] w-[90%] min-w-[320px] h-[470px] bg-fink-99 mx-auto rounded-2xl p-[10px]">
+                <div className={`main max-w-[1100px] w-[90%] min-w-[320px] h-[470px] bg-fink-99 mx-auto rounded-2xl p-[10px] ${projectTitle}`}>
                     <Swiper
                         modules={[Navigation, Autoplay]}
                         grabCursor={true}

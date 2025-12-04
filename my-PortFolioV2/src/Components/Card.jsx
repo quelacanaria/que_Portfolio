@@ -1,24 +1,29 @@
-import React from "react";
+import useWindowHeight from "./customHooks/useWindowHeight";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
-
 import "swiper/css";
 import "swiper/css/navigation";
+import './css/cardAnimate.css'
 
 const techIcons = [
   "html5", "css3", "tailwindcss", "javascript", "react", "nodejs", "expressjs",
   "java", "springBoot", "php", "xampp", "mongodb", "git", "github"
 ];
 
-function Card(){
+function Card({currentSection}){
+
+const windowHeight = useWindowHeight();
+const card = (windowHeight >= 486 && windowHeight <= 677) ? (currentSection === 'home' ? 'cardAnimate flex' : 'hidden') : 'flex';
+const cardTitle = (windowHeight >= 486 && windowHeight <= 677) ? (currentSection === 'home' ? 'titleCardAnimate block' : 'invisible') : 'block';
+
     return(
         <>
           <div className="w-full h-fit bg-green-xx block">
           <div className=" h-[220px]  w-[90%] max-w-[1000px] min-w-[300px] bg-green-xx p-[5px] mx-auto  ">
-            <p className=" mb-[20px] text-center text-[35px]">
+            <p className={`mb-[20px] text-center text-[35px] ${cardTitle}`}>
               <i className="fa-solid fa-screwdriver-wrench"></i> My TechStack
             </p>
-            <div className="w-full flex justify-between">
+            <div className={`w-full justify-between ${card}`}>
               <button className="button-prev h-[50px] w-[100px] rounded-[50px] self-center hover:scale-120 duration-300 active:scale-90 z-3 2xl:block xl:block lg:block md:block sm:hidden xs:hidden">
                 <i className="fa-solid fa-chevron-left text-[30px]"></i>
               </button>

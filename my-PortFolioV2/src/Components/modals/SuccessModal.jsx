@@ -1,4 +1,4 @@
-import './css/successAnimation.css';
+import '../css/successAnimation.css';
 
 function SuccessModal({showSuccess = 'hidden'}){
     return(

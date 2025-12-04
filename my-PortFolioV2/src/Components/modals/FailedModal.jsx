@@ -1,4 +1,4 @@
-import './css/failedAnimation.css'
+import '../css/failedAnimation.css'
 function FailedModal({showFailed = 'hidden'}){
     return(
         <>
@@ -19,4 +19,4 @@ function FailedModal({showFailed = 'hidden'}){
     )
 }
 
-export default FailedModal;
+export default FailedModal; 

@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
+import useWindowHeight from './customHooks/useWindowHeight';
 import axios from 'axios';
-import SuccessModal from './SuccessModal';
-import LoadingModal from './LoadingModal';
-import FailedModal from './FailedModal';
-function Forms({Id}){
+import SuccessModal from './modals/SuccessModal.jsx';
+import LoadingModal from './modals/LoadingModal.jsx';
+import FailedModal from './modals/FailedModal.jsx';
+import './css/formsAnimate.css'
+function Forms({currentSection}){
     const url = 'http://localhost:5000/api/post';
     const [sendMessage, setSendMessage] = useState(null);
     const [success, setSuccess] = useState('hidden');
     const [loading, setLoading] = useState('hidden');
     const [failed, setFailed] = useState('hidden');
+    const windowHeight = useWindowHeight();
     const [inputs, setInputs] = useState({
         name: '',
         subject: '',
@@ -56,14 +59,14 @@ const submit = async(event) => {
 
 }
 
-    
+    const contact = (windowHeight >= 486 && windowHeight <= 677) ? (currentSection === 'contact' ? 'formsAnimate block' : 'hidden') : 'block';
     
 
     return(
         <>
-            <div id={Id} className="w-full h-fit bg-green-xx content-center">
-                <div className="w-[80%] min-w-[320px] max-w-[800px] h-[900px] md:h-[560px] bg-fink-99 mx-auto rounded-2xl content-center">
-                    <form onSubmit={handlerSubmit} className="w-[80%] min-w-[300px] h-[85%] bg-white mx-auto rounded-2xl grid p-[20px] grid grid-cols-6  2xl:grid-rows-9 xl:grid-rows-9 lg:grid-rows-9 md:grid-rows-9 sm:grid-rows-12 xs:grid-rows-12 gap-x-0 md:gap-x-[10px] gap-y-[5px] hover:scale-105 duration-300 shadow-gg">
+            <div className="w-full h-[950px] md:h-[550px]  bg-green-xx content-center">
+                <div className={`w-[80%] min-w-[320px] max-w-[800px] h-[900px] md:h-[500px] bg-fink-99 mx-auto rounded-2xl content-center ${contact}`}>
+                    <form onSubmit={handlerSubmit} className="w-[80%] min-w-[300px] h-[90%] bg-white mx-auto rounded-2xl grid p-[20px] grid grid-cols-6  2xl:grid-rows-9 xl:grid-rows-9 lg:grid-rows-9 md:grid-rows-9 sm:grid-rows-12 xs:grid-rows-12 gap-x-0 md:gap-x-[10px] gap-y-[5px] hover:scale-105 duration-300 shadow-gg">
                         <p className="col-span-6 row-span-1 text-center self-center text-[35px] "><i className="fa-solid fa-phone"></i> Contact Me</p>
                         <label className="text-[1.2rem] self-center justify-self-start md:justify-self-end row-span-1 2xl:col-span-2 xl:col-span-2 lg:col-span-2 md:col-span-2 xs:col-span-6" htmlFor="">Company Name:</label>
                         <input value={inputs.name} name='name' onChange={event => setInputs({...inputs, name: event.target.value})} className="text-[1.2rem] h-[45px] p-[5px] border-2 col-span-8 md:col-span-3 row-span-1" placeholder="CompanyName.Inc" type="text" required/>

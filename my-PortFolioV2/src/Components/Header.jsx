@@ -24,7 +24,7 @@ function Header({currentSection}){
               <HashLink smooth to={`/#links`} scroll={scrollWithOffset} className={`m-[30px] font-bold text-white [text-shadow:2px_2px_5px_hsla(0,0%,0%,.5)] text-[1.1rem] hover:scale-130 duration-300 active:scale-90 ${currentSection === 'links' ? 'underline decoration-[5px] underline-offset-4' : ''}`} href="">My Links</HashLink> 
             </section> 
           </main> 
-        </header> 
+        </header>  
       </> ) 
       } 
       
